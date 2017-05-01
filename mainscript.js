@@ -1,4 +1,4 @@
-var carddict = {
+var cardDict = {
     "adventurer": "Adventurer",
     "advisor": "Advisor",
     "alchemist": "Alchemist",
@@ -280,6 +280,29 @@ var carddict = {
     "secretpassage": "Secret Passage"
 };
 
+var setlist = [];
+var promolist = [];
+var cards = [];
+var random_card1;
+var random_card2;
+var random_card3;
+
+function shuffle(cardArray) {
+    "use strict";
+    var currentIndex = cardArray.length, temporaryValue, randomIndex;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        // And swap it with the current element.
+        temporaryValue = cardArray[currentIndex];
+        cardArray[currentIndex] = cardArray[randomIndex];
+        cardArray[randomIndex] = temporaryValue;
+    }
+    return cardArray;
+}
+
 function checkAll(formname, checktoggle) {
     "use strict";
     var checkboxes = [],
@@ -291,94 +314,22 @@ function checkAll(formname, checktoggle) {
         }
     }
 }
-var setlist = [];
-var promolist = [];
-var cards = [];
-var random_card1;
-var random_card2;
-var random_card3;
-var placeholder = document.getElementById("placeholder");
 
-function shuffle(array) {
-    "use strict";
-    var currentIndex = array.length,
-        temporaryValue, randomIndex;
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    return array;
-}
 
-function loadtable() {
-    "use strict";
-    
-        var cardmenuobject = document.getElementById("cardmenu");
-        cardmenuobject.innerHTML = `
-            <table>
-                <tr>
-                    <td>
-                        <span id=\"card_1_image\"></span>
-                        <br>
-                        <button style=\"display: none;\" id=\"buy1\" type=\"button\" onclick=\"buy(1)\" class=\"w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow\">
-                            Buy card 
-                            <span id=\"card_1_name\">
-                            </span>
-                        </button>
-                    </td>
-                    <td>
-                        <span id=\"card_2_image\"></span>
-                        <br>
-                        <button style=\"display: none;\" id=\"buy2\" type=\"button\" onclick=\"buy(2)\" class=\"w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow\">
-                            Buy card 
-                            <span id=\"card_2_name\">
-                            </span>
-                        </button>
-                    </td>
-                    <td>
-                        <span id=\"card_3_image\"></span>
-                        <br>
-                        <button style=\"display: none;\" id=\"buy3\" type=\"button\" onclick=\"buy(3)\" class=\"w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow\">
-                            Buy card 
-                            <span id=\"card_3_name\">
-                            </span>
-                        </button>
-                    </td>
-                    <td>
-			<span id=\"placeholder\"><img src=\"images/all/throneroom.jpg\"></span>
-                        <br>
-                        <button style=\"display: none;\" id=\"buynone\" type=\"button\" onclick=\"discardall()\" class=\"w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow\">Discard All</button>
-                            </span>
-                        </button>
-                    </td>
-
-                </tr>
-            </table>
-        `
-    
-}
 window.onload = function() {
-    cardmenuobject = document.getElementById("cardmenu");
-    loadtable();
-    card_1_image = document.getElementById("card_1_image");
-    card_2_image = document.getElementById("card_2_image");
-    placeholder = document.getElementById("placeholder");
-    card_3_image = document.getElementById("card_3_image");
-    card_1_span = document.getElementById("card_1_name");
-    card_2_span = document.getElementById("card_2_name");
-    card_3_span = document.getElementById("card_3_name");
-    buy_card_1 = document.getElementById("buy1");
-    buy_card_2 = document.getElementById("buy2");
-    buy_card_3 = document.getElementById("buy3");
-    buy_none = document.getElementById("buynone");
-    draw_button = document.getElementById("draw_button");
-    cardsleft = document.getElementById("cards_left_h1");
+    cardmenuobjectEl = document.getElementById("cardmenu");
+    card_1_imageEl = document.getElementById("card_1_image");
+    card_2_imageEl = document.getElementById("card_2_image");
+    card_3_imageEl = document.getElementById("card_3_image");
+    card_1_spanEl = document.getElementById("card_1_name");
+    card_2_spanEl = document.getElementById("card_2_name");
+    card_3_spanEl = document.getElementById("card_3_name");
+    buy_card_1El = document.getElementById("buy1");
+    buy_card_2El = document.getElementById("buy2");
+    buy_card_3El = document.getElementById("buy3");
+    buy_noneEl = document.getElementById("buynone");
+    draw_buttonEl = document.getElementById("draw_button");
+    cardsLeftEl = document.getElementById("cards_left_h1");
 }
 
 function removeA(arr) {
@@ -396,87 +347,67 @@ function removeA(arr) {
 
 function generate() {
     if (sets.base.checked) {
-        console.log("Adding base set");
         setlist.push("base");
     }
     if (sets.base1.checked) {
-        console.log("Adding base set1");
         setlist.push("base1");
     }
     if (sets.base2.checked) {
-        console.log("Adding base set2");
         setlist.push("base2");
     }
     if (sets.intrigue.checked) {
-        console.log("Adding intrigue");
         setlist.push("intrigue");
     }
     if (sets.intrigue1.checked) {
-        console.log("Adding intrigue1");
         setlist.push("intrigue1");
     }
     if (sets.intrigue2.checked) {
-        console.log("Adding intrigue2");
         setlist.push("intrigue2");
     }
     if (sets.seaside.checked) {
-        console.log("Adding seaside");
         setlist.push("seaside");
     }
     if (sets.alchemy.checked) {
-        console.log("Adding alchemy");
         setlist.push("alchemy");
     }
     if (sets.prosperity.checked) {
-        console.log("Adding prosperity");
         setlist.push("prosperity");
     }
     if (sets.cornucopia.checked) {
-        console.log("Adding cornucopia");
         setlist.push("cornucopia");
     }
     if (sets.hinterlands.checked) {
-        console.log("Adding hinterlands");
         setlist.push("hinterlands");
     }
     if (sets.dark.checked) {
-        console.log("Adding dark (ages)");
         setlist.push("dark");
     }
     if (sets.guilds.checked) {
-        console.log("Adding guilds");
         setlist.push("guilds");
     }
     if (sets.adventures.checked) {
-        console.log("Adding adventures");
         setlist.push("adventures");
     }
     if (sets.empires.checked) {
-        console.log("Adding empires");
         setlist.push("empires");
     }
     if (sets.envoy.checked) {
-        console.log("Adding envoy");
         promolist.push("envoy");
     }
-    if (sets.walled.checked) {
-        console.log("Adding walled (village)");
+    if (sets.walled.checked) {       
         promolist.push("walled");
     }
     if (sets.governor.checked) {
-        console.log("Adding governor");
         promolist.push("governor");
     }
     if (sets.stash.checked) {
-        console.log("Adding stash");
         promolist.push("stash");
     }
     if (sets.prince.checked) {
-        console.log("Adding prince");
         promolist.push("prince");
     }
     if (sets.sauna.checked) {
-        console.log("Adding sauna");
+
         promolist.push("sauna");
     }
     if (setlist.length < 1) {
@@ -1015,8 +946,7 @@ function generate() {
         if (setlist.indexOf("empires") != -1) {
             cards.push("archive");
             console.log("added card " + cards[cards.length - 1]);
-            //see description in card dictionary
-            //cards.push("bustlingvillage");
+            cards.push("bustlingvillage");
             console.log("added card " + cards[cards.length - 1]);
             cards.push("capital");
             console.log("added card " + cards[cards.length - 1]);
@@ -1032,8 +962,8 @@ function generate() {
             console.log("added card " + cards[cards.length - 1]);
             cards.push("crown");
             console.log("added card " + cards[cards.length - 1]);
-            //cards.push("emporium");
-            //console.log("added card " + cards[cards.length - 1]);
+            cards.push("emporium");
+            console.log("added card " + cards[cards.length - 1]);
             cards.push("encampment");
             console.log("added card " + cards[cards.length - 1]);
             cards.push("enchantress");
@@ -1042,8 +972,8 @@ function generate() {
             console.log("added card " + cards[cards.length - 1]);
             cards.push("farmersmarket");
             console.log("added card " + cards[cards.length - 1]);
-            //            cards.push("fortune");
-            //            console.log("added card " + cards[cards.length - 1]);
+            cards.push("fortune");
+            console.log("added card " + cards[cards.length - 1]);
             cards.push("forum");
             console.log("added card " + cards[cards.length - 1]);
             cards.push("gladiator");
@@ -1056,10 +986,10 @@ function generate() {
             console.log("added card " + cards[cards.length - 1]);
             cards.push("patrician");
             console.log("added card " + cards[cards.length - 1]);
-            //cards.push("plunder");
-            //console.log("added card " + cards[cards.length - 1]);
-            //            cards.push("rocks");
-            //            console.log("added card " + cards[cards.length - 1]);
+            cards.push("plunder");
+            console.log("added card " + cards[cards.length - 1]);
+            cards.push("rocks");
+            console.log("added card " + cards[cards.length - 1]);
             cards.push("royalblacksmith");
             console.log("added card " + cards[cards.length - 1]);
             cards.push("sacrifice");
@@ -1974,10 +1904,10 @@ function exclude_cards() {
             removeA(cards, "archive");
             console.log(cards);
         }
-        //        if (excludedcards.bustlingvillage.checked){
-        //            removeA(cards,"bustlingvillage");
-        //            console.log(cards);
-        //        }
+        if (excludedcards.bustlingvillage.checked){
+                    removeA(cards,"bustlingvillage");
+                    console.log(cards);
+        }
         if (excludedcards.capital.checked) {
             removeA(cards, "capital");
             console.log(cards);
@@ -2006,10 +1936,10 @@ function exclude_cards() {
             removeA(cards, "crown");
             console.log(cards);
         }
-        //if (excludedcards.emporium.checked){
-        //    removeA(cards,"emporium");
-        //    console.log(cards);
-        //}
+        if (excludedcards.emporium.checked){
+            removeA(cards,"emporium");
+           console.log(cards);
+         }
         if (excludedcards.encampment.checked) {
             removeA(cards, "encampment");
             console.log(cards);
@@ -2026,10 +1956,10 @@ function exclude_cards() {
             removeA(cards, "farmersmarket");
             console.log(cards);
         }
-        //        if (excludedcards.fortune.checked){
-        //            removeA(cards,"fortune");
-        //            console.log(cards);
-        //        }
+        if (excludedcards.fortune.checked){
+            removeA(cards,"fortune");
+            console.log(cards);
+        }
         if (excludedcards.forum.checked) {
             removeA(cards, "forum");
             console.log(cards);
@@ -2054,14 +1984,14 @@ function exclude_cards() {
             removeA(cards, "patrician");
             console.log(cards);
         }
-        //        if (excludedcards.plunder.checked){
-        //            removeA(cards,"plunder");
-        //            console.log(cards);
-        //        }
-        //        if (excludedcards.rocks.checked){
-        //            removeA(cards,"rocks");
-        //            console.log(cards);
-        //        }
+        if (excludedcards.plunder.checked){
+            removeA(cards,"plunder");
+            console.log(cards);
+        }
+        if (excludedcards.rocks.checked){
+            removeA(cards,"rocks");
+            console.log(cards);
+        }
         if (excludedcards.royalblacksmith.checked) {
             removeA(cards, "royalblacksmith");
             console.log(cards);
@@ -2135,99 +2065,12 @@ function exclude_cards() {
     cards = shuffle(cards);
     document.getElementById("cards_to_exclude").style.display = "none";
     document.getElementById("deck_select").style.display = "block";
-    var rememberto = 0;
-    var remembertodiv = document.getElementById("rememberto");
-    var topoflist = document.getElementById("topoflist");
-    var alchemypotionremember = document.getElementById("alcpotrem");
-    var coinrem = document.getElementById("coinrem");
-    var spoilsreminder = document.getElementById("spoilsrem");
-    var vicreminder = document.getElementById("vicrem");
-    var minus1coinrem = document.getElementById("m1crem");
-    var debtrem = document.getElementById("debtrem");
-    var tavern = document.getElementById("tavern");
-    var ruins = document.getElementById("ruins");
-    var emb = document.getElementById("emb");
-    var jtr = document.getElementById("jtr");
-    var hmr = document.getElementById("hmr");
-    var nvmr = document.getElementById("nvmr");
-    var psmr = document.getElementById("psmr");
-    var relicrm = document.getElementById("relicrm");
-    var prizes = document.getElementById("prizes");
-    var trdr = document.getElementById("trdr");
-    var urme = document.getElementById("urme");
-    if (setlist.indexOf("alchemy") == -1) {
-        alchemypotionremember.style.display = "none";
-    }
-    ////////COIN TOKENS:
-    if ((cards.indexOf("candlestickmaker") == -1) && (cards.indexOf("merchantguild") == -1) && (cards.indexOf("baker") == -1) && (cards.indexOf("butcher") == -1) && (cards.indexOf("pirateship") == -1) && (cards.indexOf("plaza") == -1) && (cards.indexOf("traderoute") == -1)) {
-        coinrem.style.display = "none";
-    }
-    ///////SPOILS:
-    if ((cards.indexOf("banditcamp") == -1) && (cards.indexOf("marauder") == -1) && (cards.indexOf("pillage") == -1)) {
-        spoilsreminder.style.display = "none";
-    }
-    ////////VICTORY TOKENS:
-    if ((cards.indexOf("bishop") == -1) && (cards.indexOf("chariotrace") == -1) && (cards.indexOf("emporium") == -1) && (cards.indexOf("goons") == -1) && (cards.indexOf("groundskeeper") == -1) && (cards.indexOf("monument") == -1) && (cards.indexOf("plunder") == -1) && (cards.indexOf("sacrifice") == -1) && (cards.indexOf("temple") == -1)) {
-        vicreminder.style.display = "none";
-    }
-    ////////BRIDGE TROLL:
-    if (cards.indexOf("bridgetroll") == -1) {
-        minus1coinrem.style.display = "none";
-    }
-    ////////DEBT:
-    if ((cards.indexOf("capital") == -1) && (cards.indexOf("cityquarter") == -1) && (cards.indexOf("engineer") == -1) && (cards.indexOf("overlord") == -1) && (cards.indexOf("royalblacksmith") == -1)) {
-        debtrem.style.display = "none";
-    }
-    ////////TAVERN MAT:
-    if ((cards.indexOf("coinoftherealm") == -1) && (cards.indexOf("distantlands") == -1) && (cards.indexOf("duplicate") == -1) && (cards.indexOf("miser") == -1) && (cards.indexOf("ratcatcher") == -1) && (cards.indexOf("royalcarriage") == -1) && (cards.indexOf("transmogrify") == -1) && (cards.indexOf("winemerchant") == -1)) {
-        tavern.style.display = "none";
-    }
-    ////////RUINS:
-    if ((cards.indexOf("cultist") == -1) && (cards.indexOf("deathcart") == -1) && (cards.indexOf("marauder") == -1)) {
-        ruins.style.display = "none";
-    }
-    //////EMBARGO:
-    if (cards.indexOf("embargo") == -1) {
-        emb.style.display = "none";
-    }
-    ///////JOURNEY TOKENS:
-    if ((cards.indexOf("giant") == -1) && (cards.indexOf("ranger") == -1)) {
-        jtr.style.display = "none";
-    }
-    ///////HERMIT/MADMAN:
-    if (cards.indexOf("hermit") == -1) {
-        hmr.style.display = "none";
-    }
-    ///////NATIVE VILLAGE:
-    if (cards.indexOf("nativevillage") == -1) {
-        nvmr.style.display = "none";
-    }
-    ///////PIRATE SHIP:
-    if (cards.indexOf("pirateship") == -1) {
-        psmr.style.display = "none";
-    }
-    ///////RELIC:
-    if (cards.indexOf("relic") == -1) {
-        relicrm.style.display = "none";
-    }
-    ///////PRIZES:
-    if (cards.indexOf("tournament") == -1) {
-        prizes.style.display = "none";
-    }
-    ///////TRADE ROUTE:
-    if (cards.indexOf("traderoute") == -1) {
-        trdr.style.display = "none";
-    }
-    ///////URCHIN/MERCENARY:
-    if (cards.indexOf("urchin") == -1) {
-        urme.style.display = "none";
-    }
+  
 }
 
 function draw_cards() {
-    document.getElementById("rememberto").style.display = "none";
-    console.log("rememberto was removed");
-    cardsleft.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
+    
+    cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
     if (cards.length > 2) {
         console.log(cards);
         random_card1 = cards[0];
@@ -2236,21 +2079,20 @@ function draw_cards() {
         removeA(cards, random_card2);
         random_card3 = cards[0];
         removeA(cards, random_card3);
-        card_1_image.innerHTML = "<img width='296' height='473' src='images/all/" + random_card1 + ".jpg'>";
-        card_2_image.innerHTML = "<img width='296' height='473' src='images/all/" + random_card2 + ".jpg'>";
-        card_3_image.innerHTML = "<img width='296' height='473' src='images/all/" + random_card3 + ".jpg'>";
-        card_1_span.innerHTML = carddict[random_card1];
-        card_2_span.innerHTML = carddict[random_card2];
-        card_3_span.innerHTML = carddict[random_card3];
-        draw_button.style.display = "none";
-        card_1_image.style.display = "inline";
-        card_2_image.style.display = "inline";
-        card_3_image.style.display = "inline";
-        placeholder.style.display = "inline";
-        buy_card_1.style.display = "inline";
-        buy_card_2.style.display = "inline";
-        buy_card_3.style.display = "inline";
-        buy_none.style.display = "inline";
+        card_1_imageEl.innerHTML = "<img width='296' height='473' src='images/all/" + random_card1 + ".jpg'>";
+        card_2_imageEl.innerHTML = "<img width='296' height='473' src='images/all/" + random_card2 + ".jpg'>";
+        card_3_imageEl.innerHTML = "<img width='296' height='473' src='images/all/" + random_card3 + ".jpg'>";
+        card_1_spanEl.innerHTML = cardDict[random_card1];
+        card_2_spanEl.innerHTML = cardDict[random_card2];
+        card_3_spanEl.innerHTML = cardDict[random_card3];
+        draw_buttonEl.style.display = "none";
+        card_1_imageEl.style.display = "inline";
+        card_2_imageEl.style.display = "inline";
+        card_3_imageEl.style.display = "inline";
+        buy_card_1El.style.display = "inline";
+        buy_card_2El.style.display = "inline";
+        buy_card_3El.style.display = "inline";
+        buy_noneEl.style.display = "inline";
     } else if (cards.length == 2) {
         console.log(cards);
         random_card1 = cards[0];
@@ -2258,30 +2100,28 @@ function draw_cards() {
         random_card2 = cards[0];
         removeA(cards, random_card2);
         random_card3 = false;
-        card_1_image.innerHTML = "<img src='images/all/" + random_card1 + ".jpg'>";
-        card_2_image.innerHTML = "<img src='images/all/" + random_card2 + ".jpg'>";
-        card_1_span.innerHTML = carddict[random_card1];
-        card_2_span.innerHTML = carddict[random_card2];
-        draw_button.style.display = "none";
-        card_1_image.style.display = "inline";
-        card_2_image.style.display = "inline";
-        placeholder.style.display = "inline";
-        buy_card_1.style.display = "inline";
-        buy_card_2.style.display = "inline";
-        buy_none.style.display = "inline";
+        card_1_imageEl.innerHTML = "<img src='images/all/" + random_card1 + ".jpg'>";
+        card_2_imageEl.innerHTML = "<img src='images/all/" + random_card2 + ".jpg'>";
+        card_1_spanEl.innerHTML = cardDict[random_card1];
+        card_2_spanEl.innerHTML = cardDict[random_card2];
+        draw_buttonEl.style.display = "none";
+        card_1_imageEl.style.display = "inline";
+        card_2_imageEl.style.display = "inline";
+        buy_card_1El.style.display = "inline";
+        buy_card_2El.style.display = "inline";
+        buy_noneEl.style.display = "inline";
     } else if (cards.length == 1) {
         console.log(cards);
         random_card1 = cards[0];
         random_card2 = false;
         random_card3 = false;
         removeA(cards, random_card1);
-        card_1_image.innerHTML = "<img src='images/all/" + random_card1 + ".jpg'>";
-        card_1_span.innerHTML = carddict[random_card1];
-        draw_button.style.display = "none";
-        card_1_image.style.display = "inline";
-        placeholder.style.display = "inline";
-        buy_card_1.style.display = "inline";
-        buy_none.style.display = "inline";
+        card_1_imageEl.innerHTML = "<img src='images/all/" + random_card1 + ".jpg'>";
+        card_1_spanEl.innerHTML = cardDict[random_card1];
+        draw_buttonEl.style.display = "none";
+        card_1_imageEl.style.display = "inline";
+        buy_card_1El.style.display = "inline";
+        buy_noneEl.style.display = "inline";
     } else {
         document.getElementById("deck_select").style.display = "none";
         document.getElementById("done").style.display = "block";
@@ -2298,16 +2138,15 @@ function discardall() {
     if (random_card3) {
         cards.push(random_card3);
     }
-    draw_button.style.display = "inline";
-    card_1_image.style.display = "none";
-    card_2_image.style.display = "none";
-    card_3_image.style.display = "none";
-    placeholder.style.display = "none";
-    buy_card_1.style.display = "none";
-    buy_card_2.style.display = "none";
-    buy_card_3.style.display = "none";
-    buy_none.style.display = "none";
-    cardsleft.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
+    draw_buttonEl.style.display = "inline";
+    card_1_imageEl.style.display = "none";
+    card_2_imageEl.style.display = "none";
+    card_3_imageEl.style.display = "none";
+    buy_card_1El.style.display = "none";
+    buy_card_2El.style.display = "none";
+    buy_card_3El.style.display = "none";
+    buy_noneEl.style.display = "none";
+    cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
 }
 
 function buy(card_to_buy) {
@@ -2327,14 +2166,13 @@ function buy(card_to_buy) {
         cards.push(random_card1);
         cards.push(random_card2);
     }
-    draw_button.style.display = "inline";
-    card_1_image.style.display = "none";
-    card_2_image.style.display = "none";
-    card_3_image.style.display = "none";
-    placeholder.style.display = "none";
-    buy_card_1.style.display = "none";
-    buy_card_2.style.display = "none";
-    buy_card_3.style.display = "none";
-    buy_none.style.display = "none";
-    cardsleft.innerHTML = "Cards Remaining:&nbsp;" + cards.length
+    draw_buttonEl.style.display = "inline";
+    card_1_imageEl.style.display = "none";
+    card_2_imageEl.style.display = "none";
+    card_3_imageEl.style.display = "none";
+    buy_card_1El.style.display = "none";
+    buy_card_2El.style.display = "none";
+    buy_card_3El.style.display = "none";
+    buy_noneEl.style.display = "none";
+    cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length
 }
