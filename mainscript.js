@@ -22,8 +22,7 @@ var carddict = {
     "bridge": "Bridge",
     "bridgetroll": "Bridge Troll",
     "bureaucrat": "Bureaucrat",
-    //bustling village sits under settlers, so it can't get picked
-    //"bustlingvillage": "Bustling Village",
+    "bustlingvillage": "Bustling Village",
     "butcher": "Butcher",
     "cache": "Cache",
     "candlestickmaker": "Candlestick Maker",
@@ -64,7 +63,7 @@ var carddict = {
     "duplicate": "Duplicate",
     "embargo": "Embargo",
     "embassy": "Embassy",
-    //"emporium": "Emporium",
+    "emporium": "Emporium",
     "encampment": "Encampment",
     "enchantress": "Enchantress",
     "engineer": "Engineer",
@@ -84,7 +83,7 @@ var carddict = {
     "forager": "Forager",
     "forge": "Forge",
     "fortress": "Fortress",
-    //    "fortune": "Fortune",
+    "fortune": "Fortune",
     "fortuneteller": "Fortune Teller",
     "forum": "Forum",
     "gardens": "Gardens",
@@ -176,8 +175,7 @@ var carddict = {
     "pillage": "Pillage",
     "pirateship": "Pirate Ship",
     "plaza": "Plaza",
-    //ugh more split cards
-    //"plunder": "Plunder",
+    "plunder": "Plunder",
     "poorhouse": "Poor House",
     "port": "Port",
     "possession": "Possession",
@@ -193,7 +191,7 @@ var carddict = {
     "relic": "Relic",
     "remake": "Remake",
     "remodel": "Remodel",
-    //    "rocks": "Rocks",
+    "rocks": "Rocks",
     "rogue": "Rogue",
     "royalblacksmith": "Royal Blacksmith",
     "royalcarriage": "Royal Carriage",
@@ -266,7 +264,6 @@ var carddict = {
     "workersvillage": "Worker's Village",
     "workshop": "Workshop",
     "youngwitch": "Young Witch",
-    //crap they came out with second edition cards!!!
     "artisan": "Artisan",
     "bandit": "Bandit",
     "harbinger": "Harbinger",
@@ -321,7 +318,7 @@ function shuffle(array) {
 
 function loadtable() {
     "use strict";
-    if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent))) {
+    
         var cardmenuobject = document.getElementById("cardmenu");
         cardmenuobject.innerHTML = `
             <table>
@@ -364,7 +361,7 @@ function loadtable() {
                 </tr>
             </table>
         `
-    }
+    
 }
 window.onload = function() {
     cardmenuobject = document.getElementById("cardmenu");
