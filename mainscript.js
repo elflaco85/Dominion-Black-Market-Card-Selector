@@ -330,7 +330,7 @@ window.onload = function() {
     window.buy_card_3El = document.getElementById("buy3");
     window.buy_noneEl = document.getElementById("buynone");
     window.draw_buttonEl = document.getElementById("draw_button");
-    window.cardsLeftEl = document.getElementById("cards_left_h1");
+    window.cardsLeftEl = document.getElementById("cards_left");
 }
 
 function removeFromArray(array, element) {

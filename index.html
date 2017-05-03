@@ -7,9 +7,9 @@
    <body>
       <script src="mainscript.js"></script>
       <div id="choose_sets" style="display: block;">
-         <h1>Select the sets</h1>
+         <h2>Select the sets</h2>
          <form action="" id="sets" method="get" name="sets">
-            <h2 style="cursor:help" title="Sets are sold either as stand-alone sets or as expansions.">Sets</h2>
+            <h3 style="cursor:help" title="Sets are sold either as stand-alone sets or as expansions.">Sets</h3>
              <label><input name="base" type="checkbox" value="Base" style="cursor:help" title="The cards in the Base Set that are in the first and second editions">Base Set </label><br>
              <label class="editionExclusive"><input name="base1" type="checkbox" value="Base1" style="cursor:help" title="The cards in the Base Set that are only in the first edition">1st edition exclusive cards </label><br>
              <label class="editionExclusive"><input name="base2" type="checkbox" value="Base2" style="cursor:help" title="The cards in the Base Set that are only in the second edition">2st edition exclusive cards </label><br>
@@ -25,7 +25,7 @@
              <label><input name="guilds" type="checkbox" value="Guilds" style="cursor:help" title="All of the cards in Guilds">Guilds </label><br>
              <label><input name="adventures" type="checkbox" value="Adventures" style="cursor:help" title="All of the cards in Adventures">Adventures </label><br>
              <label><input name="empires" type="checkbox" value="Empires" style="cursor:help" title="All of the cards in Empires">Empires </label><br>
-             <h2 style="cursor:help" title="Promo cards are given away at special events, or sold later, at a higher price.  They only contain a single card.">Promo Cards</h2>
+             <h3 style="cursor:help" title="Promo cards are given away at special events, or sold later, at a higher price.  They only contain a single card.">Promo Cards</h3>
              <label><input name="envoy" type="checkbox" value="Envoy" style="cursor:help" title="The Envoy promo card">Envoy </label><br>
              <label><input name="walled" type="checkbox" value="Walled" style="cursor:help" title="The Walled Village promo card">Walled Village </label><br>
              <label><input name="governor" type="checkbox" value="Governor" style="cursor:help" title="The Governor promo card">Governor </label><br>
@@ -41,10 +41,10 @@
          </form>
       </div>
       <div id="cards_to_exclude" style="display: none;">
-         <h1 style="margin:0px 0px 0px 0px;">Cards to exclude</h1>
+         <h3 style="margin:0px 0px 0px 0px;">Cards to exclude</h3>
          <form action="" id="form-cards-to-exclude" method="get" name="excludedcards">
             <div id="base-cards-to-exclude" style="display: none;">
-               <h2>Base Set</h2>
+               <h4>Base Set</h4>
                <label><input name="bureaucrat" type="checkbox" value="exclude">Bureaucrat<br></label>
                <label><input name="cellar" type="checkbox" value="exclude">Cellar<br></label>
                <label><input name="chapel" type="checkbox" value="exclude">Chapel<br></label>
@@ -83,7 +83,7 @@
                <label><input name="vassal" type="checkbox" value="exclude">Vassal<br></label>
             </div>
             <div id="intrigue-cards-to-exclude" style="display: none;">
-               <h2>Intrigue</h2>
+               <h4>Intrigue</h4>
                <label><input name="baron" type="checkbox" value="exclude">Baron<br></label>
                <label><input name="bridge" type="checkbox" value="exclude">Bridge<br></label>
                <label><input name="conspirator" type="checkbox" value="exclude">Conspirator<br></label>
@@ -122,7 +122,7 @@
                <label><input name="secretpassage" type="checkbox" value="exclude">Secret Passage<br></label>
             </div>
             <div id="seaside-cards-to-exclude" style="display: none;">
-               <h2>Seaside</h2>
+               <h4>Seaside</h4>
                <label><input name="ambassador" type="checkbox" value="exclude">Ambassador<br></label>
                <label><input name="bazaar" type="checkbox" value="exclude">Bazaar<br></label>
                <label><input name="caravan" type="checkbox" value="exclude">Caravan<br></label>
@@ -151,7 +151,7 @@
                <label><input name="wharf" type="checkbox" value="exclude">Wharf<br></label>
             </div>
             <div id="alchemy-cards-to-exclude" style="display: none;">
-               <h2>Alchemy</h2>
+               <h4>Alchemy</h4>
                <label><input name="alchemist" type="checkbox" value="exclude">Alchemist<br></label>
                <label><input name="apothecary" type="checkbox" value="exclude">Apothecary<br></label>
                <label><input name="apprentice" type="checkbox" value="exclude">Apprentice<br></label>
@@ -166,7 +166,7 @@
                <label><input name="vineyard" type="checkbox" value="exclude">Vineyard<br></label>
             </div>
             <div id="prosperity-cards-to-exclude" style="display: none;">
-               <h2>Prosperity</h2>
+               <h4>Prosperity</h4>
                <label><input name="bank" type="checkbox" value="exclude">Bank<br></label>
                <label><input name="bishop" type="checkbox" value="exclude">Bishop<br></label>
                <label><input name="city" type="checkbox" value="exclude">City<br></label>
@@ -194,7 +194,7 @@
                <label><input name="workersvillage" type="checkbox" value="exclude">Workers Village<br></label>
             </div>
             <div id="cornucopia-cards-to-exclude" style="display: none;">
-               <h2>Cornucopia</h2>
+               <h4>Cornucopia</h4>
                <label><input name="fairgrounds" type="checkbox" value="exclude">Fairgrounds<br></label>
                <label><input name="farmingvillage" type="checkbox" value="exclude">Farming Village<br></label>
                <label><input name="fortuneteller" type="checkbox" value="exclude">Fortune Teller<br></label>
@@ -210,7 +210,7 @@
                <label><input name="youngwitch" type="checkbox" value="exclude">Young Witch<br></label>
             </div>
             <div id="hinterlands-cards-to-exclude" style="display: none;">
-               <h2>Hinterlands</h2>
+               <h4>Hinterlands</h4>
                <label><input name="bordervillage" type="checkbox" value="exclude">Border Village<br></label>
                <label><input name="cache" type="checkbox" value="exclude">Cache<br></label>
                <label><input name="cartographer" type="checkbox" value="exclude">Cartographer<br></label>
@@ -239,7 +239,7 @@
                <label><input name="tunnel" type="checkbox" value="exclude">Tunnel<br></label>
             </div>
             <div id="dark-cards-to-exclude" style="display: none;">
-               <h2>Dark Ages</h2>
+               <h4>Dark Ages</h4>
                <label><input name="altar" type="checkbox" value="exclude">Altar<br></label>
                <label><input name="armory" type="checkbox" value="exclude">Armory<br></label>
                <label><input name="banditcamp" type="checkbox" value="exclude">Bandit Camp<br></label>
@@ -277,7 +277,7 @@
                <label><input name="wanderingminstrel" type="checkbox" value="exclude">Wandering Minstrel<br></label>
             </div>
             <div id="guilds-cards-to-exclude" style="display: none;">
-               <h2>Guilds</h2>
+               <h4>Guilds</h4>
                <label><input name="advisor" type="checkbox" value="exclude">Advisor<br></label>
                <label><input name="baker" type="checkbox" value="exclude">Baker<br></label>
                <label><input name="butcher" type="checkbox" value="exclude">Butcher<br></label>
@@ -293,7 +293,7 @@
                <label><input name="taxman" type="checkbox" value="exclude">Taxman<br></label>
             </div>
             <div id="adventures-cards-to-exclude" style="display: none;">
-               <h2>Adventures</h2>
+               <h4>Adventures</h4>
                <label><input name="amulet" type="checkbox" value="exclude">Amulet<br></label>
                <label><input name="artificer" type="checkbox" value="exclude">Artificer<br></label>
                <label><input name="bridgetroll" type="checkbox" value="exclude">Bridge Troll<br></label>
@@ -326,7 +326,7 @@
                <label><input name="winemerchant" type="checkbox" value="exclude">Wine Merchant<br></label>
             </div>
             <div id="empires-cards-to-exclude" style="display: none;">
-               <h2>Empires</h2>
+               <h4>Empires</h4>
                <label><input name="archive" type="checkbox" value="exclude">Archive<br></label>
                <input type="checkbox" name="bustlingvillage" value="exclude">Bustling Village<br>
                <label><input name="capital" type="checkbox" value="exclude">Capital<br></label>
@@ -358,7 +358,7 @@
                <label><input name="wildhunt" type="checkbox" value="exclude">Wild Hunt<br></label>
             </div>
             <div id="promo-cards-to-exclude" style="display: none;">
-               <h2>Promo Cards</h2>
+               <h4>Promo Cards</h4>
                <span id="envoy-cards-to-exclude" style="display: none;">
                   <label><input id="envoy-cards-to-exclude" name="envoy" type="checkbox" value="exclude">Envoy<br></label>
                 </span> 
@@ -391,27 +391,27 @@
          </form>
       </div>
       <div id="deck_select" style="display: none;">
-         <h1 id="cards_left_h1">Cards Remaining:&nbsp;25</h1>
+         <h3 id="cards_left"></h3>
          <div id="cardmenu">
             <div id="cards_selected">
-                <div class="cardRow" style="display: inline;">
-                    <span id="card_1_image" class="cardImage" style="display: inline;"><img src="images/all/emporium.jpg"></span>
+                <div class="cardRow" >
+                    <span id="card_1_image" class="cardImage" ></span>
                      <div class="buyButtonDiv">
                         <button class="w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow" id="buy1" onclick="buy(1)" style="display: inline;" type="button">
                             Buy card <span id="card_1_name">Emporium</span>
                         </button>
                     </div>
                 </div>
-                <div class="cardRow" style="display: inline;">
-                    <span id="card_2_image" class="cardImage" style="display: inline;"><img src="images/all/sacrifice.jpg"></span>
+                <div class="cardRow">
+                    <span id="card_2_image" class="cardImage" ></span>
                     <div class="buyButtonDiv">
                         <button class="w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow" id="buy2" onclick="buy(2)" style="display: inline;" type="button">
                             Buy card <span id="card_2_name">Sacrifice</span>
                         </button> 
                     </div>
                 </div>
-                <div class="cardRow" style="display: inline;">
-                    <span id="card_3_image" class="cardImage" style="display: inline;"><img src="images/all/forum.jpg"></span>
+                <div class="cardRow" >
+                    <span id="card_3_image" class="cardImage" ></span>
                     <div class="buyButtonDiv">
                         <button class="w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow" id="buy3" onclick="buy(3)" style="display: inline;" type="button">
                             Buy card <span id="card_3_name">Forum</span>
@@ -426,7 +426,7 @@
          <button class="w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow" id="draw_button" onclick="draw_cards()" type="button" style="display: block;">Draw Cards</button>
       </div>
       <div id="done" style="display: none;">
-         <h1>The Black Market Deck is Empty!</h1>
+         <h2>The Black Market Deck is Empty!</h2>
          <br>
          <button class="w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow" onclick="location='';">Make another deck</button>
       </div>
