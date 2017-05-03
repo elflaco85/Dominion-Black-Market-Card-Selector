@@ -1,12 +1,53 @@
-#placeholder {
-    visibility: hidden;
-    display: none;
+@media (max-width: 500px) {
+    html, body {
+        height: 100%;
+    }
+
+    html {
+        display: table;
+        margin: auto;
+    }
+
+    body {
+        display: table-cell;
+        vertical-align: middle;
+    }
 }
 
 #cards_selected span img{
     margin: 5px;
 }
 
-#cards_selected div button {
+input[type=button], button {
     margin :3px;
+}
+
+.editionExclusive{
+    margin-left: 5%;
+}
+
+.cardRow{
+    display: inline;
+}
+
+.buyButtonDiv{
+   margin-top:2%;
+   margin-bottom:2%;
+}
+
+.cardRow button{
+    background-color: green !important;
+}
+
+.cardRow button, #buynone{
+    width:300px;
+}
+.cardImage {
+     width:296px;
+     height:473px;
+}
+
+#buynone{
+     background-color: blue !important;
+    margin-top: 16px;
 }

@@ -1,3 +1,4 @@
+"use strict";
 var cardDict = {
     "adventurer": "Adventurer",
     "advisor": "Advisor",
@@ -283,13 +284,26 @@ var cardDict = {
 var setlist = [];
 var promolist = [];
 var cards = [];
+var revealedCards = [];
 var random_card1;
 var random_card2;
 var random_card3;
 
+function checkAll(formname, checktoggle) {
+    var checkboxes = [];
+    var i;
+    checkboxes = document[formname].getElementsByTagName('input');
+    for (i = 0; i < checkboxes.length; i += 1) {
+        if (checkboxes[i].type === 'checkbox') {
+            checkboxes[i].checked = checktoggle;
+        }
+    }
+}
+
 function shuffle(cardArray) {
-    "use strict";
-    var currentIndex = cardArray.length, temporaryValue, randomIndex;
+    var currentIndex = cardArray.length
+    var temporaryValue;
+    var randomIndex;
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
         // Pick a remaining element...
@@ -303,46 +317,28 @@ function shuffle(cardArray) {
     return cardArray;
 }
 
-function checkAll(formname, checktoggle) {
-    "use strict";
-    var checkboxes = [],
-        i;
-    checkboxes = document[formname].getElementsByTagName('input');
-    for (i = 0; i < checkboxes.length; i += 1) {
-        if (checkboxes[i].type === 'checkbox') {
-            checkboxes[i].checked = checktoggle;
-        }
-    }
-}
-
 
 window.onload = function() {
-    cardmenuobjectEl = document.getElementById("cardmenu");
-    card_1_imageEl = document.getElementById("card_1_image");
-    card_2_imageEl = document.getElementById("card_2_image");
-    card_3_imageEl = document.getElementById("card_3_image");
-    card_1_spanEl = document.getElementById("card_1_name");
-    card_2_spanEl = document.getElementById("card_2_name");
-    card_3_spanEl = document.getElementById("card_3_name");
-    buy_card_1El = document.getElementById("buy1");
-    buy_card_2El = document.getElementById("buy2");
-    buy_card_3El = document.getElementById("buy3");
-    buy_noneEl = document.getElementById("buynone");
-    draw_buttonEl = document.getElementById("draw_button");
-    cardsLeftEl = document.getElementById("cards_left_h1");
+    window.card_1_imageEl = document.getElementById("card_1_image");
+    window.card_2_imageEl = document.getElementById("card_2_image");
+    window.card_3_imageEl = document.getElementById("card_3_image");
+    window.card_1_spanEl = document.getElementById("card_1_name");
+    window.card_2_spanEl = document.getElementById("card_2_name");
+    window.card_3_spanEl = document.getElementById("card_3_name");
+    window.buy_card_1El = document.getElementById("buy1");
+    window.buy_card_2El = document.getElementById("buy2");
+    window.buy_card_3El = document.getElementById("buy3");
+    window.buy_noneEl = document.getElementById("buynone");
+    window.draw_buttonEl = document.getElementById("draw_button");
+    window.cardsLeftEl = document.getElementById("cards_left_h1");
 }
 
-function removeA(arr) {
-    var what, a = arguments,
-        L = a.length,
-        ax;
-    while (L > 1 && arr.length) {
-        what = a[--L];
-        while ((ax = arr.indexOf(what)) !== -1) {
-            arr.splice(ax, 1);
-        }
+function removeFromArray(array, element) {
+    var index = array.indexOf(element);
+    if (index > -1) {
+        array.splice(index, 1);
     }
-    return arr;
+    return array;
 }
 
 function generate() {
@@ -407,9 +403,9 @@ function generate() {
         promolist.push("prince");
     }
     if (sets.sauna.checked) {
-
         promolist.push("sauna");
     }
+
     if (setlist.length < 1) {
         alert("Please pick at least one set!");
     } else {
@@ -936,9 +932,8 @@ function generate() {
             cards.push("transmogrify");
             console.log("added card " + cards[cards.length - 1]);
             cards.push("treasuretrove");
-            //dang it i thought i had worked out all the bugs
-            //console.log("added card " + cards[cards.length - 1]);
-            //cards.push("warrior");
+            console.log("added card " + cards[cards.length - 1]);  
+            cards.push("warrior");
             console.log("added card " + cards[cards.length - 1]);
             cards.push("winemerchant");
             document.getElementById("adventures-cards-to-exclude").style.display = "inline";
@@ -1052,1004 +1047,1008 @@ function generate() {
 
 function exclude_cards() {
     if (excludedcards.adventurer.checked) {
-        removeA(cards, "adventurer");
+        removeFromArray(cards, "adventurer");
         console.log(cards);
     }
     if (excludedcards.bureaucrat.checked) {
-        removeA(cards, "bureaucrat");
+        removeFromArray(cards, "bureaucrat");
         console.log(cards);
     }
     if (excludedcards.cellar.checked) {
-        removeA(cards, "cellar");
+        removeFromArray(cards, "cellar");
         console.log(cards);
     }
     if (excludedcards.chancellor.checked) {
-        removeA(cards, "chancellor");
+        removeFromArray(cards, "chancellor");
         console.log(cards);
     }
     if (excludedcards.chapel.checked) {
-        removeA(cards, "chapel");
+        removeFromArray(cards, "chapel");
         console.log(cards);
     }
     if (excludedcards.councilroom.checked) {
-        removeA(cards, "councilroom");
+        removeFromArray(cards, "councilroom");
         console.log(cards);
     }
     if (excludedcards.feast.checked) {
-        removeA(cards, "feast");
+        removeFromArray(cards, "feast");
         console.log(cards);
     }
     if (excludedcards.festival.checked) {
-        removeA(cards, "festival");
+        removeFromArray(cards, "festival");
         console.log(cards);
     }
     if (excludedcards.gardens.checked) {
-        removeA(cards, "gardens");
+        removeFromArray(cards, "gardens");
         console.log(cards);
     }
     if (excludedcards.laboratory.checked) {
-        removeA(cards, "laboratory");
+        removeFromArray(cards, "laboratory");
         console.log(cards);
     }
     if (excludedcards.library.checked) {
-        removeA(cards, "library");
+        removeFromArray(cards, "library");
         console.log(cards);
     }
     if (excludedcards.market.checked) {
-        removeA(cards, "market");
+        removeFromArray(cards, "market");
         console.log(cards);
     }
     if (excludedcards.militia.checked) {
-        removeA(cards, "militia");
+        removeFromArray(cards, "militia");
         console.log(cards);
     }
     if (excludedcards.mine.checked) {
-        removeA(cards, "mine");
+        removeFromArray(cards, "mine");
         console.log(cards);
     }
     if (excludedcards.moat.checked) {
-        removeA(cards, "moat");
+        removeFromArray(cards, "moat");
         console.log(cards);
     }
     if (excludedcards.moneylender.checked) {
-        removeA(cards, "moneylender");
+        removeFromArray(cards, "moneylender");
         console.log(cards);
     }
     if (excludedcards.remodel.checked) {
-        removeA(cards, "remodel");
+        removeFromArray(cards, "remodel");
         console.log(cards);
     }
     if (excludedcards.smithy.checked) {
-        removeA(cards, "smithy");
+        removeFromArray(cards, "smithy");
         console.log(cards);
     }
     if (excludedcards.spy.checked) {
-        removeA(cards, "spy");
+        removeFromArray(cards, "spy");
         console.log(cards);
     }
     if (excludedcards.thief.checked) {
-        removeA(cards, "thief");
+        removeFromArray(cards, "thief");
         console.log(cards);
     }
     if (excludedcards.throneroom.checked) {
-        removeA(cards, "throneroom");
+        removeFromArray(cards, "throneroom");
         console.log(cards);
     }
     if (excludedcards.village.checked) {
-        removeA(cards, "village");
+        removeFromArray(cards, "village");
         console.log(cards);
     }
     if (excludedcards.witch.checked) {
-        removeA(cards, "witch");
+        removeFromArray(cards, "witch");
         console.log(cards);
     }
     if (excludedcards.woodcutter.checked) {
-        removeA(cards, "woodcutter");
+        removeFromArray(cards, "woodcutter");
         console.log(cards);
     }
     if (excludedcards.workshop.checked) {
-        removeA(cards, "workshop");
+        removeFromArray(cards, "workshop");
         console.log(cards);
     }
     if (excludedcards.baron.checked) {
-        removeA(cards, "baron");
+        removeFromArray(cards, "baron");
         console.log(cards);
     }
     if (excludedcards.bridge.checked) {
-        removeA(cards, "bridge");
+        removeFromArray(cards, "bridge");
         console.log(cards);
     }
     if (excludedcards.conspirator.checked) {
-        removeA(cards, "conspirator");
+        removeFromArray(cards, "conspirator");
         console.log(cards);
     }
     if (excludedcards.coppersmith.checked) {
-        removeA(cards, "coppersmith");
+        removeFromArray(cards, "coppersmith");
         console.log(cards);
     }
     if (excludedcards.courtyard.checked) {
-        removeA(cards, "courtyard");
+        removeFromArray(cards, "courtyard");
         console.log(cards);
     }
     if (excludedcards.duke.checked) {
-        removeA(cards, "duke");
+        removeFromArray(cards, "duke");
         console.log(cards);
     }
     if (excludedcards.greathall.checked) {
-        removeA(cards, "greathall");
+        removeFromArray(cards, "greathall");
         console.log(cards);
     }
     if (excludedcards.harem.checked) {
-        removeA(cards, "harem");
+        removeFromArray(cards, "harem");
         console.log(cards);
     }
     if (excludedcards.ironworks.checked) {
-        removeA(cards, "ironworks");
+        removeFromArray(cards, "ironworks");
         console.log(cards);
     }
     if (excludedcards.masquerade.checked) {
-        removeA(cards, "masquerade");
+        removeFromArray(cards, "masquerade");
         console.log(cards);
     }
     if (excludedcards.miningvillage.checked) {
-        removeA(cards, "miningvillage");
+        removeFromArray(cards, "miningvillage");
         console.log(cards);
     }
     if (excludedcards.minion.checked) {
-        removeA(cards, "minion");
+        removeFromArray(cards, "minion");
         console.log(cards);
     }
     if (excludedcards.nobles.checked) {
-        removeA(cards, "nobles");
+        removeFromArray(cards, "nobles");
         console.log(cards);
     }
     if (excludedcards.pawn.checked) {
-        removeA(cards, "pawn");
+        removeFromArray(cards, "pawn");
         console.log(cards);
     }
     if (excludedcards.saboteur.checked) {
-        removeA(cards, "saboteur");
+        removeFromArray(cards, "saboteur");
         console.log(cards);
     }
     if (excludedcards.scout.checked) {
-        removeA(cards, "scout");
+        removeFromArray(cards, "scout");
         console.log(cards);
     }
     if (excludedcards.secretchamber.checked) {
-        removeA(cards, "secretchamber");
+        removeFromArray(cards, "secretchamber");
         console.log(cards);
     }
     if (excludedcards.shantytown.checked) {
-        removeA(cards, "shantytown");
+        removeFromArray(cards, "shantytown");
         console.log(cards);
     }
     if (excludedcards.steward.checked) {
-        removeA(cards, "swindler");
+        removeFromArray(cards, "swindler");
         console.log(cards);
     }
     if (excludedcards.torturer.checked) {
-        removeA(cards, "torturer");
+        removeFromArray(cards, "torturer");
         console.log(cards);
     }
     if (excludedcards.tradingpost.checked) {
-        removeA(cards, "tradingpost");
+        removeFromArray(cards, "tradingpost");
         console.log(cards);
     }
     if (excludedcards.tribute.checked) {
-        removeA(cards, "tribute");
+        removeFromArray(cards, "tribute");
         console.log(cards);
     }
     if (excludedcards.upgrade.checked) {
-        removeA(cards, "upgrade");
+        removeFromArray(cards, "upgrade");
         console.log(cards);
     }
     if (excludedcards.wishingwell.checked) {
-        removeA(cards, "wishingwell");
+        removeFromArray(cards, "wishingwell");
         console.log(cards);
     }
     //2nd edition
     if (excludedcards.artisan.checked) {
-        removeA(cards, "artisan");
+        removeFromArray(cards, "artisan");
         console.log(cards);
     }
     if (excludedcards.bandit.checked) {
-        removeA(cards, "bandit");
+        removeFromArray(cards, "bandit");
         console.log(cards);
     }
     if (excludedcards.harbinger.checked) {
-        removeA(cards, "harbinger");
+        removeFromArray(cards, "harbinger");
         console.log(cards);
     }
     if (excludedcards.merchant.checked) {
-        removeA(cards, "merchant");
+        removeFromArray(cards, "merchant");
         console.log(cards);
     }
     if (excludedcards.poacher.checked) {
-        removeA(cards, "poacher");
+        removeFromArray(cards, "poacher");
         console.log(cards);
     }
     if (excludedcards.sentry.checked) {
-        removeA(cards, "sentry");
+        removeFromArray(cards, "sentry");
         console.log(cards);
     }
     if (excludedcards.vassal.checked) {
-        removeA(cards, "vassal");
+        removeFromArray(cards, "vassal");
         console.log(cards);
     }
     if (excludedcards.courtier.checked) {
-        removeA(cards, "courtier");
+        removeFromArray(cards, "courtier");
         console.log(cards);
     }
     if (excludedcards.diplomat.checked) {
-        removeA(cards, "diplomat");
+        removeFromArray(cards, "diplomat");
         console.log(cards);
     }
     if (excludedcards.lurker.checked) {
-        removeA(cards, "lurker");
+        removeFromArray(cards, "lurker");
         console.log(cards);
     }
     if (excludedcards.mill.checked) {
-        removeA(cards, "mill");
+        removeFromArray(cards, "mill");
         console.log(cards);
     }
     if (excludedcards.patrol.checked) {
-        removeA(cards, "patrol");
+        removeFromArray(cards, "patrol");
         console.log(cards);
     }
     if (excludedcards.replace.checked) {
-        removeA(cards, "replace");
+        removeFromArray(cards, "replace");
         console.log(cards);
     }
     if (excludedcards.secretpassage.checked) {
-        removeA(cards, "secretpassage");
+        removeFromArray(cards, "secretpassage");
         console.log(cards);
     }
     //end 2nd edition
     if (setlist.indexOf("seaside") != -1) {
         if (excludedcards.ambassador.checked) {
-            removeA(cards, "ambassador");
+            removeFromArray(cards, "ambassador");
             console.log(cards);
         }
         if (excludedcards.bazaar.checked) {
-            removeA(cards, "bazaar");
+            removeFromArray(cards, "bazaar");
             console.log(cards);
         }
         if (excludedcards.caravan.checked) {
-            removeA(cards, "caravan");
+            removeFromArray(cards, "caravan");
             console.log(cards);
         }
         if (excludedcards.cutpurse.checked) {
-            removeA(cards, "cutpurse");
+            removeFromArray(cards, "cutpurse");
             console.log(cards);
         }
         if (excludedcards.embargo.checked) {
-            removeA(cards, "embargo");
+            removeFromArray(cards, "embargo");
             console.log(cards);
         }
         if (excludedcards.explorer.checked) {
-            removeA(cards, "explorer");
+            removeFromArray(cards, "explorer");
             console.log(cards);
         }
         if (excludedcards.fishingvillage.checked) {
-            removeA(cards, "fishingvillage");
+            removeFromArray(cards, "fishingvillage");
             console.log(cards);
         }
         if (excludedcards.ghostship.checked) {
-            removeA(cards, "ghostship");
+            removeFromArray(cards, "ghostship");
             console.log(cards);
         }
         if (excludedcards.haven.checked) {
-            removeA(cards, "haven");
+            removeFromArray(cards, "haven");
             console.log(cards);
         }
         if (excludedcards.island.checked) {
-            removeA(cards, "island");
+            removeFromArray(cards, "island");
             console.log(cards);
         }
         if (excludedcards.lighthouse.checked) {
-            removeA(cards, "lighthouse");
+            removeFromArray(cards, "lighthouse");
             console.log(cards);
         }
         if (excludedcards.lookout.checked) {
-            removeA(cards, "lookout");
+            removeFromArray(cards, "lookout");
             console.log(cards);
         }
         if (excludedcards.merchantship.checked) {
-            removeA(cards, "merchantship");
+            removeFromArray(cards, "merchantship");
             console.log(cards);
         }
         if (excludedcards.nativevillage.checked) {
-            removeA(cards, "nativevillage");
+            removeFromArray(cards, "nativevillage");
             console.log(cards);
         }
         if (excludedcards.navigator.checked) {
-            removeA(cards, "navigator");
+            removeFromArray(cards, "navigator");
             console.log(cards);
         }
         if (excludedcards.outpost.checked) {
-            removeA(cards, "outpost");
+            removeFromArray(cards, "outpost");
             console.log(cards);
         }
         if (excludedcards.pearldiver.checked) {
-            removeA(cards, "pearldiver");
+            removeFromArray(cards, "pearldiver");
             console.log(cards);
         }
         if (excludedcards.pirateship.checked) {
-            removeA(cards, "pirateship");
+            removeFromArray(cards, "pirateship");
             console.log(cards);
         }
         if (excludedcards.salvager.checked) {
-            removeA(cards, "salvager");
+            removeFromArray(cards, "salvager");
             console.log(cards);
         }
         if (excludedcards.seahag.checked) {
-            removeA(cards, "seahag");
+            removeFromArray(cards, "seahag");
             console.log(cards);
         }
         if (excludedcards.smugglers.checked) {
-            removeA(cards, "smugglers");
+            removeFromArray(cards, "smugglers");
             console.log(cards);
         }
         if (excludedcards.tactician.checked) {
-            removeA(cards, "tactician");
+            removeFromArray(cards, "tactician");
             console.log(cards);
         }
         if (excludedcards.treasuremap.checked) {
-            removeA(cards, "treasuremap");
+            removeFromArray(cards, "treasuremap");
             console.log(cards);
         }
         if (excludedcards.treasury.checked) {
-            removeA(cards, "treasury");
+            removeFromArray(cards, "treasury");
             console.log(cards);
         }
         if (excludedcards.warehouse.checked) {
-            removeA(cards, "warehouse");
+            removeFromArray(cards, "warehouse");
             console.log(cards);
         }
         if (excludedcards.wharf.checked) {
-            removeA(cards, "wharf");
+            removeFromArray(cards, "wharf");
             console.log(cards);
         }
     }
     if (setlist.indexOf("alchemy") != -1) {
         if (excludedcards.alchemist.checked) {
-            removeA(cards, "alchemist");
+            removeFromArray(cards, "alchemist");
             console.log(cards);
         }
         if (excludedcards.apothecary.checked) {
-            removeA(cards, "apothecary");
+            removeFromArray(cards, "apothecary");
             console.log(cards);
         }
         if (excludedcards.apprentice.checked) {
-            removeA(cards, "apprentice");
+            removeFromArray(cards, "apprentice");
             console.log(cards);
         }
         if (excludedcards.familiar.checked) {
-            removeA(cards, "familiar");
+            removeFromArray(cards, "familiar");
             console.log(cards);
         }
         if (excludedcards.golem.checked) {
-            removeA(cards, "golem");
+            removeFromArray(cards, "golem");
             console.log(cards);
         }
         if (excludedcards.herbalist.checked) {
-            removeA(cards, "herbalist");
+            removeFromArray(cards, "herbalist");
             console.log(cards);
         }
         if (excludedcards.philosophersstone.checked) {
-            removeA(cards, "philosophersstone");
+            removeFromArray(cards, "philosophersstone");
             console.log(cards);
         }
         if (excludedcards.possession.checked) {
-            removeA(cards, "possession");
+            removeFromArray(cards, "possession");
             console.log(cards);
         }
         if (excludedcards.scryingpool.checked) {
-            removeA(cards, "scryingpool");
+            removeFromArray(cards, "scryingpool");
             console.log(cards);
         }
         if (excludedcards.transmute.checked) {
-            removeA(cards, "transmute");
+            removeFromArray(cards, "transmute");
             console.log(cards);
         }
         if (excludedcards.university.checked) {
-            removeA(cards, "university");
+            removeFromArray(cards, "university");
             console.log(cards);
         }
         if (excludedcards.vineyard.checked) {
-            removeA(cards, "vineyard");
+            removeFromArray(cards, "vineyard");
             console.log(cards);
         }
     }
     if (setlist.indexOf("prosperity") != -1) {
         if (excludedcards.bank.checked) {
-            removeA(cards, "bank");
+            removeFromArray(cards, "bank");
             console.log(cards);
         }
         if (excludedcards.bishop.checked) {
-            removeA(cards, "bishop");
+            removeFromArray(cards, "bishop");
             console.log(cards);
         }
         if (excludedcards.city.checked) {
-            removeA(cards, "city");
+            removeFromArray(cards, "city");
             console.log(cards);
         }
         if (excludedcards.contraband.checked) {
-            removeA(cards, "contraband");
+            removeFromArray(cards, "contraband");
             console.log(cards);
         }
         if (excludedcards.countinghouse.checked) {
-            removeA(cards, "countinghouse");
+            removeFromArray(cards, "countinghouse");
             console.log(cards);
         }
         if (excludedcards.expand.checked) {
-            removeA(cards, "expand");
+            removeFromArray(cards, "expand");
             console.log(cards);
         }
         if (excludedcards.forge.checked) {
-            removeA(cards, "forge");
+            removeFromArray(cards, "forge");
             console.log(cards);
         }
         if (excludedcards.goons.checked) {
-            removeA(cards, "goons");
+            removeFromArray(cards, "goons");
             console.log(cards);
         }
         if (excludedcards.grandmarket.checked) {
-            removeA(cards, "grandmarket");
+            removeFromArray(cards, "grandmarket");
             console.log(cards);
         }
         if (excludedcards.hoard.checked) {
-            removeA(cards, "hoard");
+            removeFromArray(cards, "hoard");
             console.log(cards);
         }
         if (excludedcards.kingscourt.checked) {
-            removeA(cards, "kingscourt");
+            removeFromArray(cards, "kingscourt");
             console.log(cards);
         }
         if (excludedcards.loan.checked) {
-            removeA(cards, "loan");
+            removeFromArray(cards, "loan");
             console.log(cards);
         }
         if (excludedcards.mint.checked) {
-            removeA(cards, "mint");
+            removeFromArray(cards, "mint");
             console.log(cards);
         }
         if (excludedcards.monument.checked) {
-            removeA(cards, "monument");
+            removeFromArray(cards, "monument");
             console.log(cards);
         }
         if (excludedcards.mountebank.checked) {
-            removeA(cards, "mountebank");
+            removeFromArray(cards, "mountebank");
             console.log(cards);
         }
         if (excludedcards.peddler.checked) {
-            removeA(cards, "peddler");
+            removeFromArray(cards, "peddler");
             console.log(cards);
         }
         if (excludedcards.quarry.checked) {
-            removeA(cards, "quarry");
+            removeFromArray(cards, "quarry");
             console.log(cards);
         }
         if (excludedcards.rabble.checked) {
-            removeA(cards, "rabble");
+            removeFromArray(cards, "rabble");
             console.log(cards);
         }
         if (excludedcards.royalseal.checked) {
-            removeA(cards, "royalseal");
+            removeFromArray(cards, "royalseal");
             console.log(cards);
         }
         if (excludedcards.talisman.checked) {
-            removeA(cards, "talisman");
+            removeFromArray(cards, "talisman");
             console.log(cards);
         }
         if (excludedcards.traderoute.checked) {
-            removeA(cards, "traderoute");
+            removeFromArray(cards, "traderoute");
             console.log(cards);
         }
         if (excludedcards.vault.checked) {
-            removeA(cards, "vault");
+            removeFromArray(cards, "vault");
             console.log(cards);
         }
         if (excludedcards.venture.checked) {
-            removeA(cards, "venture");
+            removeFromArray(cards, "venture");
             console.log(cards);
         }
         if (excludedcards.watchtower.checked) {
-            removeA(cards, "watchtower");
+            removeFromArray(cards, "watchtower");
             console.log(cards);
         }
         if (excludedcards.workersvillage.checked) {
-            removeA(cards, "workersvillage");
+            removeFromArray(cards, "workersvillage");
             console.log(cards);
         }
     }
     if (setlist.indexOf("cornucopia") != -1) {
         if (excludedcards.fairgrounds.checked) {
-            removeA(cards, "fairgrounds");
+            removeFromArray(cards, "fairgrounds");
             console.log(cards);
         }
         if (excludedcards.farmingvillage.checked) {
-            removeA(cards, "farmingvillage");
+            removeFromArray(cards, "farmingvillage");
             console.log(cards);
         }
         if (excludedcards.fortuneteller.checked) {
-            removeA(cards, "fortuneteller");
+            removeFromArray(cards, "fortuneteller");
             console.log(cards);
         }
         if (excludedcards.hamlet.checked) {
-            removeA(cards, "hamlet");
+            removeFromArray(cards, "hamlet");
             console.log(cards);
         }
         if (excludedcards.harvest.checked) {
-            removeA(cards, "harvest");
+            removeFromArray(cards, "harvest");
             console.log(cards);
         }
         if (excludedcards.hornofplenty.checked) {
-            removeA(cards, "hornofplenty");
+            removeFromArray(cards, "hornofplenty");
             console.log(cards);
         }
         if (excludedcards.horsetraders.checked) {
-            removeA(cards, "horsetraders");
+            removeFromArray(cards, "horsetraders");
             console.log(cards);
         }
         if (excludedcards.huntingparty.checked) {
-            removeA(cards, "huntingparty");
+            removeFromArray(cards, "huntingparty");
             console.log(cards);
         }
         if (excludedcards.jester.checked) {
-            removeA(cards, "jester");
+            removeFromArray(cards, "jester");
             console.log(cards);
         }
         if (excludedcards.menagerie.checked) {
-            removeA(cards, "menagerie");
+            removeFromArray(cards, "menagerie");
             console.log(cards);
         }
         if (excludedcards.remake.checked) {
-            removeA(cards, "remake");
+            removeFromArray(cards, "remake");
             console.log(cards);
         }
         if (excludedcards.tournament.checked) {
-            removeA(cards, "tournament");
+            removeFromArray(cards, "tournament");
             console.log(cards);
         }
         if (excludedcards.youngwitch.checked) {
-            removeA(cards, "youngwitch");
+            removeFromArray(cards, "youngwitch");
             console.log(cards);
         }
     }
     if (setlist.indexOf("dark") != -1) {
         if (excludedcards.altar.checked) {
-            removeA(cards, "altar");
+            removeFromArray(cards, "altar");
             console.log(cards);
         }
         if (excludedcards.armory.checked) {
-            removeA(cards, "armory");
+            removeFromArray(cards, "armory");
             console.log(cards);
         }
         if (excludedcards.banditcamp.checked) {
-            removeA(cards, "banditcamp");
+            removeFromArray(cards, "banditcamp");
             console.log(cards);
         }
         if (excludedcards.bandofmisfits.checked) {
-            removeA(cards, "bandofmisfits");
+            removeFromArray(cards, "bandofmisfits");
             console.log(cards);
         }
         if (excludedcards.beggar.checked) {
-            removeA(cards, "beggar");
+            removeFromArray(cards, "beggar");
             console.log(cards);
         }
         if (excludedcards.catacombs.checked) {
-            removeA(cards, "catacombs");
+            removeFromArray(cards, "catacombs");
             console.log(cards);
         }
         if (excludedcards.count.checked) {
-            removeA(cards, "count");
+            removeFromArray(cards, "count");
             console.log(cards);
         }
         if (excludedcards.counterfeit.checked) {
-            removeA(cards, "counterfeit");
+            removeFromArray(cards, "counterfeit");
             console.log(cards);
         }
         if (excludedcards.cultist.checked) {
-            removeA(cards, "cultist");
+            removeFromArray(cards, "cultist");
             console.log(cards);
         }
         if (excludedcards.deathcart.checked) {
-            removeA(cards, "deathcart");
+            removeFromArray(cards, "deathcart");
             console.log(cards);
         }
         if (excludedcards.feodum.checked) {
-            removeA(cards, "feodum");
+            removeFromArray(cards, "feodum");
             console.log(cards);
         }
         if (excludedcards.forager.checked) {
-            removeA(cards, "forager");
+            removeFromArray(cards, "forager");
             console.log(cards);
         }
         if (excludedcards.fortress.checked) {
-            removeA(cards, "fortress");
+            removeFromArray(cards, "fortress");
             console.log(cards);
         }
         if (excludedcards.graverobber.checked) {
-            removeA(cards, "graverobber");
+            removeFromArray(cards, "graverobber");
             console.log(cards);
         }
         if (excludedcards.hermit.checked) {
-            removeA(cards, "hermit");
+            removeFromArray(cards, "hermit");
             console.log(cards);
         }
         if (excludedcards.huntinggrounds.checked) {
-            removeA(cards, "huntinggrounds");
+            removeFromArray(cards, "huntinggrounds");
             console.log(cards);
         }
         if (excludedcards.ironmonger.checked) {
-            removeA(cards, "ironmonger");
+            removeFromArray(cards, "ironmonger");
             console.log(cards);
         }
         if (excludedcards.junkdealer.checked) {
-            removeA(cards, "junkdealer");
+            removeFromArray(cards, "junkdealer");
             console.log(cards);
         }
         if (excludedcards.knights.checked) {
-            removeA(cards, "knights");
+            removeFromArray(cards, "knights");
             console.log(cards);
         }
         if (excludedcards.marauder.checked) {
-            removeA(cards, "marauder");
+            removeFromArray(cards, "marauder");
             console.log(cards);
         }
         if (excludedcards.marketsquare.checked) {
-            removeA(cards, "marketsquare");
+            removeFromArray(cards, "marketsquare");
             console.log(cards);
         }
         if (excludedcards.mystic.checked) {
-            removeA(cards, "mystic");
+            removeFromArray(cards, "mystic");
             console.log(cards);
         }
         if (excludedcards.pillage.checked) {
-            removeA(cards, "pillage");
+            removeFromArray(cards, "pillage");
             console.log(cards);
         }
         if (excludedcards.poorhouse.checked) {
-            removeA(cards, "poorhouse");
+            removeFromArray(cards, "poorhouse");
             console.log(cards);
         }
         if (excludedcards.procession.checked) {
-            removeA(cards, "procession");
+            removeFromArray(cards, "procession");
             console.log(cards);
         }
         if (excludedcards.rats.checked) {
-            removeA(cards, "rats");
+            removeFromArray(cards, "rats");
             console.log(cards);
         }
     }
     if (setlist.indexOf("guilds") != -1) {
         if (excludedcards.advisor.checked) {
-            removeA(cards, "advisor");
+            removeFromArray(cards, "advisor");
             console.log(cards);
         }
         if (excludedcards.baker.checked) {
-            removeA(cards, "baker");
+            removeFromArray(cards, "baker");
             console.log(cards);
         }
         if (excludedcards.butcher.checked) {
-            removeA(cards, "butcher");
+            removeFromArray(cards, "butcher");
             console.log(cards);
         }
         if (excludedcards.candlestickmaker.checked) {
-            removeA(cards, "candlestickmaker");
+            removeFromArray(cards, "candlestickmaker");
             console.log(cards);
         }
         if (excludedcards.doctor.checked) {
-            removeA(cards, "doctor");
+            removeFromArray(cards, "doctor");
             console.log(cards);
         }
         if (excludedcards.herald.checked) {
-            removeA(cards, "herald");
+            removeFromArray(cards, "herald");
             console.log(cards);
         }
         if (excludedcards.journeyman.checked) {
-            removeA(cards, "journeyman");
+            removeFromArray(cards, "journeyman");
             console.log(cards);
         }
         if (excludedcards.masterpiece.checked) {
-            removeA(cards, "masterpiece");
+            removeFromArray(cards, "masterpiece");
             console.log(cards);
         }
         if (excludedcards.merchantguild.checked) {
-            removeA(cards, "merchantguild");
+            removeFromArray(cards, "merchantguild");
             console.log(cards);
         }
         if (excludedcards.plaza.checked) {
-            removeA(cards, "plaza");
+            removeFromArray(cards, "plaza");
             console.log(cards);
         }
         if (excludedcards.soothsayer.checked) {
-            removeA(cards, "soothsayer");
+            removeFromArray(cards, "soothsayer");
             console.log(cards);
         }
         if (excludedcards.stonemason.checked) {
-            removeA(cards, "stonemason");
+            removeFromArray(cards, "stonemason");
             console.log(cards);
         }
         if (excludedcards.taxman.checked) {
-            removeA(cards, "taxman");
+            removeFromArray(cards, "taxman");
             console.log(cards);
         }
     }
     if (setlist.indexOf("adventures") != -1) {
         if (excludedcards.amulet.checked) {
-            removeA(cards, "amulet");
+            removeFromArray(cards, "amulet");
             console.log(cards);
         }
         if (excludedcards.artificer.checked) {
-            removeA(cards, "artificer");
+            removeFromArray(cards, "artificer");
             console.log(cards);
         }
         if (excludedcards.bridgetroll.checked) {
-            removeA(cards, "bridgetroll");
+            removeFromArray(cards, "bridgetroll");
             console.log(cards);
         }
         if (excludedcards.caravanguard.checked) {
-            removeA(cards, "caravanguard");
+            removeFromArray(cards, "caravanguard");
             console.log(cards);
         }
         if (excludedcards.coinoftherealm.checked) {
-            removeA(cards, "coinoftherealm");
+            removeFromArray(cards, "coinoftherealm");
             console.log(cards);
         }
         if (excludedcards.distantlands.checked) {
-            removeA(cards, "distantlands");
+            removeFromArray(cards, "distantlands");
             console.log(cards);
         }
         if (excludedcards.dungeon.checked) {
-            removeA(cards, "dungeon");
+            removeFromArray(cards, "dungeon");
             console.log(cards);
         }
         if (excludedcards.duplicate.checked) {
-            removeA(cards, "duplicate");
+            removeFromArray(cards, "duplicate");
             console.log(cards);
         }
         if (excludedcards.gear.checked) {
-            removeA(cards, "gear");
+            removeFromArray(cards, "gear");
             console.log(cards);
         }
         if (excludedcards.giant.checked) {
-            removeA(cards, "giant");
+            removeFromArray(cards, "giant");
             console.log(cards);
         }
         if (excludedcards.guide.checked) {
-            removeA(cards, "guide");
+            removeFromArray(cards, "guide");
             console.log(cards);
         }
         if (excludedcards.hauntedwoods.checked) {
-            removeA(cards, "hauntedwoods");
+            removeFromArray(cards, "hauntedwoods");
             console.log(cards);
         }
         if (excludedcards.hireling.checked) {
-            removeA(cards, "hireling");
+            removeFromArray(cards, "hireling");
             console.log(cards);
         }
         if (excludedcards.illgottengains.checked) {
-            removeA(cards, "illgottengains");
+            removeFromArray(cards, "illgottengains");
             console.log(cards);
         }
         if (excludedcards.lostcity.checked) {
-            removeA(cards, "lostcity");
+            removeFromArray(cards, "lostcity");
             console.log(cards);
         }
         if (excludedcards.magpie.checked) {
-            removeA(cards, "magpie");
+            removeFromArray(cards, "magpie");
             console.log(cards);
         }
         if (excludedcards.messenger.checked) {
-            removeA(cards, "messenger");
+            removeFromArray(cards, "messenger");
             console.log(cards);
         }
         if (excludedcards.miser.checked) {
-            removeA(cards, "miser");
+            removeFromArray(cards, "miser");
             console.log(cards);
         }
         if (excludedcards.page.checked) {
-            removeA(cards, "page");
+            removeFromArray(cards, "page");
             console.log(cards);
         }
         if (excludedcards.peasant.checked) {
-            removeA(cards, "port");
+            removeFromArray(cards, "peasant");
+            console.log(cards);
+        }
+        if (excludedcards.port.checked) {
+            removeFromArray(cards, "port");
             console.log(cards);
         }
         if (excludedcards.ranger.checked) {
-            removeA(cards, "ranger");
+            removeFromArray(cards, "ranger");
             console.log(cards);
         }
         if (excludedcards.ratcatcher.checked) {
-            removeA(cards, "ratcatcher");
+            removeFromArray(cards, "ratcatcher");
             console.log(cards);
         }
         if (excludedcards.raze.checked) {
-            removeA(cards, "raze");
+            removeFromArray(cards, "raze");
             console.log(cards);
         }
         if (excludedcards.relic.checked) {
-            removeA(cards, "relic");
+            removeFromArray(cards, "relic");
             console.log(cards);
         }
         if (excludedcards.royalcarriage.checked) {
-            removeA(cards, "royalcarriage");
+            removeFromArray(cards, "royalcarriage");
             console.log(cards);
         }
         if (excludedcards.storyteller.checked) {
-            removeA(cards, "storyteller");
+            removeFromArray(cards, "storyteller");
             console.log(cards);
         }
         if (excludedcards.swamphag.checked) {
-            removeA(cards, "swamphag");
+            removeFromArray(cards, "swamphag");
             console.log(cards);
         }
         if (excludedcards.transmogrify.checked) {
-            removeA(cards, "transmogrify");
+            removeFromArray(cards, "transmogrify");
             console.log(cards);
         }
         if (excludedcards.treasuretrove.checked) {
-            removeA(cards, "treasuretrove");
+            removeFromArray(cards, "treasuretrove");
             console.log(cards);
         }
         if (excludedcards.winemerchant.checked) {
-            removeA(cards, "winemerchant");
+            removeFromArray(cards, "winemerchant");
             console.log(cards);
         }
     }
     if (setlist.indexOf("empires") != -1) {
         if (excludedcards.archive.checked) {
-            removeA(cards, "archive");
+            removeFromArray(cards, "archive");
             console.log(cards);
         }
         if (excludedcards.bustlingvillage.checked){
-                    removeA(cards,"bustlingvillage");
+                    removeFromArray(cards,"bustlingvillage");
                     console.log(cards);
         }
         if (excludedcards.capital.checked) {
-            removeA(cards, "capital");
+            removeFromArray(cards, "capital");
             console.log(cards);
         }
         if (excludedcards.castles.checked) {
-            removeA(cards, "castles");
+            removeFromArray(cards, "castles");
             console.log(cards);
         }
         if (excludedcards.catapult.checked) {
-            removeA(cards, "catapult");
+            removeFromArray(cards, "catapult");
             console.log(cards);
         }
         if (excludedcards.chariotrace.checked) {
-            removeA(cards, "chariotrace");
+            removeFromArray(cards, "chariotrace");
             console.log(cards);
         }
         if (excludedcards.charm.checked) {
-            removeA(cards, "charm");
+            removeFromArray(cards, "charm");
             console.log(cards);
         }
         if (excludedcards.cityquarter.checked) {
-            removeA(cards, "cityquarter");
+            removeFromArray(cards, "cityquarter");
             console.log(cards);
         }
         if (excludedcards.crown.checked) {
-            removeA(cards, "crown");
+            removeFromArray(cards, "crown");
             console.log(cards);
         }
         if (excludedcards.emporium.checked){
-            removeA(cards,"emporium");
+            removeFromArray(cards,"emporium");
            console.log(cards);
          }
         if (excludedcards.encampment.checked) {
-            removeA(cards, "encampment");
+            removeFromArray(cards, "encampment");
             console.log(cards);
         }
         if (excludedcards.enchantress.checked) {
-            removeA(cards, "enchantress");
+            removeFromArray(cards, "enchantress");
             console.log(cards);
         }
         if (excludedcards.engineer.checked) {
-            removeA(cards, "engineer");
+            removeFromArray(cards, "engineer");
             console.log(cards);
         }
         if (excludedcards.farmersmarket.checked) {
-            removeA(cards, "farmersmarket");
+            removeFromArray(cards, "farmersmarket");
             console.log(cards);
         }
         if (excludedcards.fortune.checked){
-            removeA(cards,"fortune");
+            removeFromArray(cards,"fortune");
             console.log(cards);
         }
         if (excludedcards.forum.checked) {
-            removeA(cards, "forum");
+            removeFromArray(cards, "forum");
             console.log(cards);
         }
         if (excludedcards.gladiator.checked) {
-            removeA(cards, "gladiator");
+            removeFromArray(cards, "gladiator");
             console.log(cards);
         }
         if (excludedcards.groundskeeper.checked) {
-            removeA(cards, "groundskeeper");
+            removeFromArray(cards, "groundskeeper");
             console.log(cards);
         }
         if (excludedcards.legionary.checked) {
-            removeA(cards, "legionary");
+            removeFromArray(cards, "legionary");
             console.log(cards);
         }
         if (excludedcards.overlord.checked) {
-            removeA(cards, "overlord");
+            removeFromArray(cards, "overlord");
             console.log(cards);
         }
         if (excludedcards.patrician.checked) {
-            removeA(cards, "patrician");
+            removeFromArray(cards, "patrician");
             console.log(cards);
         }
         if (excludedcards.plunder.checked){
-            removeA(cards,"plunder");
+            removeFromArray(cards,"plunder");
             console.log(cards);
         }
         if (excludedcards.rocks.checked){
-            removeA(cards,"rocks");
+            removeFromArray(cards,"rocks");
             console.log(cards);
         }
         if (excludedcards.royalblacksmith.checked) {
-            removeA(cards, "royalblacksmith");
+            removeFromArray(cards, "royalblacksmith");
             console.log(cards);
         }
         if (excludedcards.sacrifice.checked) {
-            removeA(cards, "sacrifice");
+            removeFromArray(cards, "sacrifice");
             console.log(cards);
         }
         if (excludedcards.settlers.checked) {
-            removeA(cards, "settlers");
+            removeFromArray(cards, "settlers");
             console.log(cards);
         }
         if (excludedcards.temple.checked) {
-            removeA(cards, "temple");
+            removeFromArray(cards, "temple");
             console.log(cards);
         }
         if (excludedcards.villa.checked) {
-            removeA(cards, "villa");
+            removeFromArray(cards, "villa");
             console.log(cards);
         }
         if (excludedcards.wildhunt.checked) {
-            removeA(cards, "wildhunt");
+            removeFromArray(cards, "wildhunt");
             console.log(cards);
         }
     }
     if (promolist.indexOf("envoy") != -1) {
         if (excludedcards.envoy.checked) {
-            removeA(cards, "envoy");
+            removeFromArray(cards, "envoy");
             console.log(cards);
         }
     }
     if (promolist.indexOf("governor") != -1) {
         if (excludedcards.governor.checked) {
-            removeA(cards, "governor");
+            removeFromArray(cards, "governor");
             console.log(cards);
         }
     }
     if (promolist.indexOf("prince") != -1) {
         if (excludedcards.prince.checked) {
-            removeA(cards, "prince");
+            removeFromArray(cards, "prince");
             console.log(cards);
         }
     }
     if (promolist.indexOf("stash") != -1) {
         if (excludedcards.stash.checked) {
-            removeA(cards, "stash");
+            removeFromArray(cards, "stash");
             console.log(cards);
         }
     }
     if (promolist.indexOf("walled") != -1) {
         if (excludedcards.walledvillage.checked) {
-            removeA(cards, "walledvillage");
+            removeFromArray(cards, "walledvillage");
             console.log(cards);
         }
     }
     if (promolist.indexOf("sauna") != -1) {
         if (excludedcards.sauna.checked) {
-            removeA(cards, "sauna");
+            removeFromArray(cards, "sauna");
             console.log(cards);
         }
     }
@@ -2057,15 +2056,21 @@ function exclude_cards() {
     for future sets:
     if (setlist.indexOf("")!=-1){
         if (excludedcards..checked){
-            removeA(cards,"");
+            removeFromArray(cards,"");
             console.log(cards);
         }
     }
     */
+    var limit = excludedcards.deckLimit.value;
+
     cards = shuffle(cards);
+    if(limit) cards = cards.splice(0,limit);
     document.getElementById("cards_to_exclude").style.display = "none";
     document.getElementById("deck_select").style.display = "block";
-  
+
+    [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
+        el.style.display= "none";
+    });   
 }
 
 function draw_cards() {
@@ -2073,15 +2078,19 @@ function draw_cards() {
     cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
     if (cards.length > 2) {
         console.log(cards);
-        random_card1 = cards[0];
-        removeA(cards, random_card1);
-        random_card2 = cards[0];
-        removeA(cards, random_card2);
-        random_card3 = cards[0];
-        removeA(cards, random_card3);
-        card_1_imageEl.innerHTML = "<img width='296' height='473' src='images/all/" + random_card1 + ".jpg'>";
-        card_2_imageEl.innerHTML = "<img width='296' height='473' src='images/all/" + random_card2 + ".jpg'>";
-        card_3_imageEl.innerHTML = "<img width='296' height='473' src='images/all/" + random_card3 + ".jpg'>";
+
+        random_card1 = cards.splice(0,1)[0];
+        revealedCards.push(random_card1);
+
+        random_card2 = cards.splice(0,1)[0];
+        revealedCards.push(random_card2);
+
+        random_card3 = cards.splice(0,1)[0];
+        revealedCards.push(random_card3);
+
+        card_1_imageEl.innerHTML = "<img  src='images/all/" + random_card1 + ".jpg'>";
+        card_2_imageEl.innerHTML = "<img  src='images/all/" + random_card2 + ".jpg'>";
+        card_3_imageEl.innerHTML = "<img  src='images/all/" + random_card3 + ".jpg'>";
         card_1_spanEl.innerHTML = cardDict[random_card1];
         card_2_spanEl.innerHTML = cardDict[random_card2];
         card_3_spanEl.innerHTML = cardDict[random_card3];
@@ -2095,10 +2104,13 @@ function draw_cards() {
         buy_noneEl.style.display = "inline";
     } else if (cards.length == 2) {
         console.log(cards);
-        random_card1 = cards[0];
-        removeA(cards, random_card1);
-        random_card2 = cards[0];
-        removeA(cards, random_card2);
+
+        random_card1 = cards.splice(0,1)[0];
+        revealedCards.push(random_card1);
+
+        random_card2 = cards.splice(0,1)[0];
+        revealedCards.push(random_card2);
+
         random_card3 = false;
         card_1_imageEl.innerHTML = "<img src='images/all/" + random_card1 + ".jpg'>";
         card_2_imageEl.innerHTML = "<img src='images/all/" + random_card2 + ".jpg'>";
@@ -2112,10 +2124,11 @@ function draw_cards() {
         buy_noneEl.style.display = "inline";
     } else if (cards.length == 1) {
         console.log(cards);
-        random_card1 = cards[0];
+        random_card1 = cards.splice(0,1)[0];
+        revealedCards.push(random_card1);
+
         random_card2 = false;
         random_card3 = false;
-        removeA(cards, random_card1);
         card_1_imageEl.innerHTML = "<img src='images/all/" + random_card1 + ".jpg'>";
         card_1_spanEl.innerHTML = cardDict[random_card1];
         draw_buttonEl.style.display = "none";
@@ -2126,18 +2139,17 @@ function draw_cards() {
         document.getElementById("deck_select").style.display = "none";
         document.getElementById("done").style.display = "block";
     }
+
+    [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
+        el.style.display= "inline";
+    });  
 }
 
 function discardall() {
-    if (random_card1) {
-        cards.push(random_card1);
-    }
-    if (random_card2) {
-        cards.push(random_card2);
-    }
-    if (random_card3) {
-        cards.push(random_card3);
-    }
+
+    cards = cards.concat(shuffle(revealedCards));
+    revealedCards = [];
+
     draw_buttonEl.style.display = "inline";
     card_1_imageEl.style.display = "none";
     card_2_imageEl.style.display = "none";
@@ -2147,25 +2159,18 @@ function discardall() {
     buy_card_3El.style.display = "none";
     buy_noneEl.style.display = "none";
     cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
+    [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
+        el.style.display= "none";
+    });  
 }
 
 function buy(card_to_buy) {
-    if (card_to_buy == 1) {
-        if (random_card2) {
-            cards.push(random_card2);
-        }
-        if (random_card3) {
-            cards.push(random_card3);
-        }
-    } else if (card_to_buy == 2) {
-        cards.push(random_card1);
-        if (random_card3) {
-            cards.push(random_card3);
-        }
-    } else if (card_to_buy == 3) {
-        cards.push(random_card1);
-        cards.push(random_card2);
-    }
+    card_to_buy--;
+console.log('buying '+ revealedCards[card_to_buy])
+    revealedCards.splice(card_to_buy,1);
+    cards = cards.concat(shuffle(revealedCards));
+    revealedCards = [];
+
     draw_buttonEl.style.display = "inline";
     card_1_imageEl.style.display = "none";
     card_2_imageEl.style.display = "none";
@@ -2174,5 +2179,10 @@ function buy(card_to_buy) {
     buy_card_2El.style.display = "none";
     buy_card_3El.style.display = "none";
     buy_noneEl.style.display = "none";
-    cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length
+    cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
+    [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
+        el.style.display= "none";
+    });  
+
+    
 }
