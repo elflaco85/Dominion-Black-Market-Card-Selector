@@ -602,6 +602,8 @@ function generate() {
             console.log("added card " + cards[cards.length - 1]);
             cards.push("treasuremap");
             console.log("added card " + cards[cards.length - 1]);
+            cards.push("treasury");
+            console.log("added card " + cards[cards.length - 1]);
             cards.push("warehouse");
             console.log("added card " + cards[cards.length - 1]);
             cards.push("wharf");

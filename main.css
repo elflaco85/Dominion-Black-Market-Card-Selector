@@ -6,9 +6,7 @@ input[type=button], button {
     margin :3px;
 }
 
-.editionExclusive{
-    margin-left: 5%;
-}
+
 
 .cardRow{
     display: inline;
@@ -36,10 +34,9 @@ input[type=button], button {
     margin-top: 16px;
 }
 
-#choose_sets{
-    margin-left:5%;
+ #choose_sets, .editionExclusive, #cards_to_exclude{
+     margin-left:2%;
 }
-
 
 
 @media (max-width: 600px) {
@@ -58,7 +55,6 @@ input[type=button], button {
     }
 
     .cardRow button, #buynone{
-        /*width:300px;*/
         min-width:230px;
     }
     .cardImage img {
@@ -73,6 +69,13 @@ input[type=button], button {
     label{
         font-size:19px;
     }
+
+    #choose_sets, .editionExclusive, #cards_to_exclude{
+         margin-left:5%;
+    }
+}
+
+
 
 }
 
