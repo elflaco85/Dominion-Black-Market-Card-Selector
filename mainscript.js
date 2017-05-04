@@ -341,6 +341,24 @@ function removeFromArray(array, element) {
     return array;
 }
 
+function showCards(){
+    var cardListStr = "";
+
+    var currentCardArr = cards.slice();
+    currentCardArr.sort();
+    currentCardArr.forEach(function (card,index) {
+        if(index>0){
+            cardListStr += '<br>'; 
+        }
+        cardListStr += '\u2022' + cardDict[card];
+    });
+
+    if(cards.length<7) cardListStr="Too few cards, so we're not going to display them. <br> No cheating!";
+
+    document.getElementById("alphaCardList").innerHTML =cardListStr;
+
+}
+
 function generate() {
     if (sets.base.checked) {
         setlist.push("base");
@@ -2224,6 +2242,9 @@ function exclude_cards() {
 
 function draw_cards() {
     
+    document.getElementById("cardListPane").style.display = 'none';
+    document.getElementById("alphaCardList").innerHTML='';
+
     cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
     if (cards.length > 2) {
         console.log(cards);
@@ -2311,11 +2332,12 @@ function discardall() {
     [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
         el.style.display= "none";
     });  
+    document.getElementById("cardListPane").style.display = 'inline';
 }
 
 function buy(card_to_buy) {
     card_to_buy--;
-console.log('buying '+ revealedCards[card_to_buy])
+    console.log('buying '+ revealedCards[card_to_buy])
     revealedCards.splice(card_to_buy,1);
     cards = cards.concat(shuffle(revealedCards));
     revealedCards = [];
@@ -2332,6 +2354,6 @@ console.log('buying '+ revealedCards[card_to_buy])
     [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
         el.style.display= "none";
     });  
-
+    document.getElementById("cardListPane").style.display = 'inline';
     
 }
