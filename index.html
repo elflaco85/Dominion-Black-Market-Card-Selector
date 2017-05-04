@@ -41,10 +41,10 @@
          </form>
       </div>
       <div id="cards_to_exclude" style="display: none;">
-         <h3 style="margin:0px 0px 0px 0px;">Cards to exclude</h3>
+         <h3 style="margin:0px 0px 0px 0px;">Cards already in the supply</h3>
          <form action="" id="form-cards-to-exclude" method="get" name="excludedcards">
             <div id="base-cards-to-exclude" style="display: none;">
-               <h4>Base Set</h4>
+               <h3><i>Base Set</i></h3>
                <label><input name="bureaucrat" type="checkbox" value="exclude">Bureaucrat<br></label>
                <label><input name="cellar" type="checkbox" value="exclude">Cellar<br></label>
                <label><input name="chapel" type="checkbox" value="exclude">Chapel<br></label>
@@ -83,7 +83,7 @@
                <label><input name="vassal" type="checkbox" value="exclude">Vassal<br></label>
             </div>
             <div id="intrigue-cards-to-exclude" style="display: none;">
-               <h4>Intrigue</h4>
+               <h3><i>Intrigue</i></h3>
                <label><input name="baron" type="checkbox" value="exclude">Baron<br></label>
                <label><input name="bridge" type="checkbox" value="exclude">Bridge<br></label>
                <label><input name="conspirator" type="checkbox" value="exclude">Conspirator<br></label>
@@ -122,7 +122,7 @@
                <label><input name="secretpassage" type="checkbox" value="exclude">Secret Passage<br></label>
             </div>
             <div id="seaside-cards-to-exclude" style="display: none;">
-               <h4>Seaside</h4>
+               <h3><i>Seaside</i></h3>
                <label><input name="ambassador" type="checkbox" value="exclude">Ambassador<br></label>
                <label><input name="bazaar" type="checkbox" value="exclude">Bazaar<br></label>
                <label><input name="caravan" type="checkbox" value="exclude">Caravan<br></label>
@@ -151,7 +151,7 @@
                <label><input name="wharf" type="checkbox" value="exclude">Wharf<br></label>
             </div>
             <div id="alchemy-cards-to-exclude" style="display: none;">
-               <h4>Alchemy</h4>
+               <h3><i>Alchemy</i></h3>
                <label><input name="alchemist" type="checkbox" value="exclude">Alchemist<br></label>
                <label><input name="apothecary" type="checkbox" value="exclude">Apothecary<br></label>
                <label><input name="apprentice" type="checkbox" value="exclude">Apprentice<br></label>
@@ -166,7 +166,7 @@
                <label><input name="vineyard" type="checkbox" value="exclude">Vineyard<br></label>
             </div>
             <div id="prosperity-cards-to-exclude" style="display: none;">
-               <h4>Prosperity</h4>
+               <h3><i>Prosperity</i></h3>
                <label><input name="bank" type="checkbox" value="exclude">Bank<br></label>
                <label><input name="bishop" type="checkbox" value="exclude">Bishop<br></label>
                <label><input name="city" type="checkbox" value="exclude">City<br></label>
@@ -194,7 +194,7 @@
                <label><input name="workersvillage" type="checkbox" value="exclude">Workers Village<br></label>
             </div>
             <div id="cornucopia-cards-to-exclude" style="display: none;">
-               <h4>Cornucopia</h4>
+               <h3><i>Cornucopia</i></h3>
                <label><input name="fairgrounds" type="checkbox" value="exclude">Fairgrounds<br></label>
                <label><input name="farmingvillage" type="checkbox" value="exclude">Farming Village<br></label>
                <label><input name="fortuneteller" type="checkbox" value="exclude">Fortune Teller<br></label>
@@ -210,7 +210,7 @@
                <label><input name="youngwitch" type="checkbox" value="exclude">Young Witch<br></label>
             </div>
             <div id="hinterlands-cards-to-exclude" style="display: none;">
-               <h4>Hinterlands</h4>
+               <h3><i>Hinterlands</i></h3>
                <label><input name="bordervillage" type="checkbox" value="exclude">Border Village<br></label>
                <label><input name="cache" type="checkbox" value="exclude">Cache<br></label>
                <label><input name="cartographer" type="checkbox" value="exclude">Cartographer<br></label>
@@ -239,7 +239,7 @@
                <label><input name="tunnel" type="checkbox" value="exclude">Tunnel<br></label>
             </div>
             <div id="dark-cards-to-exclude" style="display: none;">
-               <h4>Dark Ages</h4>
+               <h3><i>Dark Ages</i></h3>
                <label><input name="altar" type="checkbox" value="exclude">Altar<br></label>
                <label><input name="armory" type="checkbox" value="exclude">Armory<br></label>
                <label><input name="banditcamp" type="checkbox" value="exclude">Bandit Camp<br></label>
@@ -277,7 +277,7 @@
                <label><input name="wanderingminstrel" type="checkbox" value="exclude">Wandering Minstrel<br></label>
             </div>
             <div id="guilds-cards-to-exclude" style="display: none;">
-               <h4>Guilds</h4>
+               <h3><i>Guilds</i></h3>
                <label><input name="advisor" type="checkbox" value="exclude">Advisor<br></label>
                <label><input name="baker" type="checkbox" value="exclude">Baker<br></label>
                <label><input name="butcher" type="checkbox" value="exclude">Butcher<br></label>
@@ -293,7 +293,7 @@
                <label><input name="taxman" type="checkbox" value="exclude">Taxman<br></label>
             </div>
             <div id="adventures-cards-to-exclude" style="display: none;">
-               <h4>Adventures</h4>
+               <h3><i>Adventures</i></h3>
                <label><input name="amulet" type="checkbox" value="exclude">Amulet<br></label>
                <label><input name="artificer" type="checkbox" value="exclude">Artificer<br></label>
                <label><input name="bridgetroll" type="checkbox" value="exclude">Bridge Troll<br></label>
@@ -326,9 +326,9 @@
                <label><input name="winemerchant" type="checkbox" value="exclude">Wine Merchant<br></label>
             </div>
             <div id="empires-cards-to-exclude" style="display: none;">
-               <h4>Empires</h4>
+               <h3><i>Empires</i></h3>
                <label><input name="archive" type="checkbox" value="exclude">Archive<br></label>
-               <input type="checkbox" name="bustlingvillage" value="exclude">Bustling Village<br>
+               <label><input type="checkbox" name="bustlingvillage" value="exclude">Bustling Village<br></label>
                <label><input name="capital" type="checkbox" value="exclude">Capital<br></label>
                <label><input name="castles" type="checkbox" value="exclude">Castles<br></label>
                <label><input name="catapult" type="checkbox" value="exclude">Catapult<br></label>
@@ -336,20 +336,20 @@
                <label><input name="charm" type="checkbox" value="exclude">Charm<br></label>
                <label><input name="cityquarter" type="checkbox" value="exclude">City Quarter<br></label>
                <label><input name="crown" type="checkbox" value="exclude">Crown<br></label>
-               <input type="checkbox" name="emporium" value="exclude">Emporium<br>
+               <label><input type="checkbox" name="emporium" value="exclude">Emporium<br></label>
                <label><input name="encampment" type="checkbox" value="exclude">Encampment<br></label>
                <label><input name="enchantress" type="checkbox" value="exclude">Enchantress<br></label>
                <label><input name="engineer" type="checkbox" value="exclude">Engineer<br></label>
                <label><input name="farmersmarket" type="checkbox" value="exclude">Farmers Market<br></label>
-               <input type="checkbox" name="fortune" value="exclude">Fortune<br>
+               <label> <input type="checkbox" name="fortune" value="exclude">Fortune<br></label>
                <label><input name="forum" type="checkbox" value="exclude">Forum<br></label>
                <label><input name="gladiator" type="checkbox" value="exclude">Gladiator<br></label>
                <label><input name="groundskeeper" type="checkbox" value="exclude">Grounds Keeper<br></label>
                <label><input name="legionary" type="checkbox" value="exclude">Legionary<br></label>
                <label><input name="overlord" type="checkbox" value="exclude">Overlord<br></label>
                <label><input name="patrician" type="checkbox" value="exclude">Patrician<br></label>
-               <input type="checkbox" name="plunder" value="exclude">Plunder<br>
-               <input type="checkbox" name="rocks" value="exclude">Rocks<br>
+               <label><input type="checkbox" name="plunder" value="exclude">Plunder<br></label>
+               <label><input type="checkbox" name="rocks" value="exclude">Rocks<br></label>
                <label><input name="royalblacksmith" type="checkbox" value="exclude">Royal Blacksmith<br></label>
                <label><input name="sacrifice" type="checkbox" value="exclude">Sacrifice<br></label>
                <label><input name="settlers" type="checkbox" value="exclude">Settlers<br></label>
@@ -358,7 +358,7 @@
                <label><input name="wildhunt" type="checkbox" value="exclude">Wild Hunt<br></label>
             </div>
             <div id="promo-cards-to-exclude" style="display: none;">
-               <h4>Promo Cards</h4>
+               <h3><i>Promo Cards</i></h3>
                <span id="envoy-cards-to-exclude" style="display: none;">
                   <label><input id="envoy-cards-to-exclude" name="envoy" type="checkbox" value="exclude">Envoy<br></label>
                 </span> 
@@ -385,7 +385,7 @@
                </div>
                -->
                <br>
-              <span>Black Market Deck Limit: </span> <input type="text" name="deckLimit" maxlength="3" value="25" style="width:40px;">
+              <div style="margin-top:10px;"><label>Black Market Deck Limit: <label> <input type="text" name="deckLimit" maxlength="3" value="25" style="width:40px;"></div>
                <br>
             <button class="w3-btn w3-black w3-hover-red w3-round-xxlarge w3-border-black w3-text-shadow" onclick="exclude_cards()" type="button">Continue</button>
          </form>

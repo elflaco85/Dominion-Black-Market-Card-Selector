@@ -36,7 +36,13 @@ input[type=button], button {
     margin-top: 16px;
 }
 
-@media (max-width: 500px) {
+#choose_sets{
+    margin-left:5%;
+}
+
+
+
+@media (max-width: 600px) {
     html, body {
         height: 100%;
     }
@@ -53,11 +59,25 @@ input[type=button], button {
 
     .cardRow button, #buynone{
         /*width:300px;*/
-        min-width:175px;
+        min-width:230px;
     }
     .cardImage img {
-        width:175px;
-        height:280px;
+        width:230px;
+        height:368px;
     }
 
+    input[type=button], button {
+        font-size :19px;
+    }
+
+    label{
+        font-size:19px;
+    }
+
+}
+
+@media (max-width: 350px) {
+    #choose_sets{
+        margin-left:10%;
+    }
 }

@@ -1043,6 +1043,8 @@ function generate() {
         }
         */
     }
+
+    window.scrollTo(0, 0);
 }
 
 function exclude_cards() {
@@ -2067,6 +2069,7 @@ function exclude_cards() {
     if(limit) cards = cards.splice(0,limit);
     document.getElementById("cards_to_exclude").style.display = "none";
     document.getElementById("deck_select").style.display = "block";
+    cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
 
     [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
         el.style.display= "none";
