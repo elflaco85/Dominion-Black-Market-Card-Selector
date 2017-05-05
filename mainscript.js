@@ -288,6 +288,7 @@ var revealedCards = [];
 var random_card1;
 var random_card2;
 var random_card3;
+var deckCardList = [];
 
 function checkAll(formname, checktoggle) {
     var checkboxes = [];
@@ -341,23 +342,16 @@ function removeFromArray(array, element) {
     return array;
 }
 
-function showCards(){
-    var cardListStr = "";
+function showDeck(){
+    var cardListEl = document.getElementById("deckCardList");
 
-    var currentCardArr = cards.slice();
-    currentCardArr.sort();
-    currentCardArr.forEach(function (card,index) {
-        if(index>0){
-            cardListStr += '<br>'; 
-        }
-        cardListStr += '\u2022' + cardDict[card];
-    });
-
-    if(cards.length<7) cardListStr="Too few cards, so we're not going to display them. <br> No cheating!";
-
-    document.getElementById("alphaCardList").innerHTML =cardListStr;
-
-}
+    if(cardListEl.style.display =='none'){
+        cardListEl.style.display = 'inline';
+    }else{
+        cardListEl.style.display = 'none';
+    }
+    
+}   
 
 function generate() {
     if (sets.base.checked) {
@@ -2238,12 +2232,22 @@ function exclude_cards() {
     [].forEach.call(document.getElementsByClassName("cardRow"), function (el) {
         el.style.display= "none";
     });   
+
+    var currentCardArr = cards.slice();
+    currentCardArr.sort();
+    currentCardArr.forEach(function (card,index) {
+        if(index>0){
+            deckCardList += '<br>'; 
+        }
+        deckCardList += '\u2022' + cardDict[card];
+    });
+    document.getElementById("deckCardList").innerHTML = deckCardList;
 }
 
 function draw_cards() {
     
     document.getElementById("cardListPane").style.display = 'none';
-    document.getElementById("alphaCardList").innerHTML='';
+    document.getElementById("deckCardList").style.display = 'none';
 
     cardsLeftEl.innerHTML = "Cards Remaining:&nbsp;" + cards.length;
     if (cards.length > 2) {
